@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rpg;
 
 import java.io.File;
@@ -12,12 +7,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 
-
+/**
+ * @author GoddardMorse & Mcat12
+ */
 public class RPG {
     static String[] village = {
-        "rest at the inn                 ",
-        "level up at the training grounds",
-        "get a new weapon at the shop    "
+        "Rest at the inn                 ",
+        "Level up at the training grounds",
+        "Get a new weapon at the shop    "
     };
     static String[] inventory = {
         " ", " ", " ", " ", " "
@@ -27,7 +24,7 @@ public class RPG {
     };
     static int on = 1;
     static Object[] shop = {
-        "greatsword", "potion", 
+        "Greatsword", "Potion", 
     };
     static int[] shoppower = {
         5, 10
@@ -48,7 +45,7 @@ public class RPG {
     static int initiative;
     static int maxhp;
     static chooseclass v = new chooseclass();
-    public static NewJFrame frame = new NewJFrame();
+    public static RPGFrame frame = new RPGFrame();
     /**
      * @param args the command line arguments
      */
@@ -63,23 +60,23 @@ public class RPG {
                 Logger.getLogger(RPG.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        JOptionPane.showMessageDialog(null, "please build your character.");
+        JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
         while (submitted == false) {
         }
-        frame.setthetext("hello, " + name + ", a " + whatclass + " with " + hp + " hp");
+        frame.setthetext("Hello, " + name + ", a " + whatclass + " with " + hp + " HP");
         updatestats();
         frame.setVisible(true);
     }
     public static void updatestats() {
         frame.setthelabel (name +
-                "\nlevel: " + level +
-                "\nexp: " + exp +
-                "\nhp: " + hp + 
-                "\nstrength: " + strength + 
-                "\nmagic: " + magic +
-                "\ninitiative: " + initiative +
-                "\ngold:" + gold);
+                "\nLevel: " + level +
+                "\nExp: " + exp +
+                "\nHP: " + hp + 
+                "\nStrength: " + strength + 
+                "\nMagic: " + magic +
+                "\nInitiative: " + initiative +
+                "\nGold:" + gold);
     }
 
 }

@@ -1,12 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rpg;
 
 /**
- *
- * @author Isaac
+ * @author GoddardMorse & Mcat12
  */
 public class village extends javax.swing.JFrame {
 
@@ -68,18 +63,18 @@ public class village extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        RPG.frame.setthetext("you have rested and gained 10 hp");
+        RPG.frame.setthetext("You have rested and gained 10 HP");
         RPG.hp = RPG.hp + 10;
         if (RPG.hp > RPG.maxhp) {
             RPG.hp = RPG.maxhp;
         }
-        RPG.frame.setthetext(RPG.frame.getthetext() + "\nyou now have " + RPG.hp + " hp");
+        RPG.frame.setthetext(RPG.frame.getthetext() + "\nYou now have " + RPG.hp + " HP");
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (RPG.exp > 99) {
-            RPG.frame.setthetext("you have gained a level");
+            RPG.frame.setthetext("You have gained a level!");
             RPG.exp = RPG.exp - 100;
             RPG.level++;
             RPG.strength = RPG.strength + 10;
