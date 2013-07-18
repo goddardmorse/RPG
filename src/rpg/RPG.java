@@ -62,11 +62,6 @@ public class RPG {
         }
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
-        while (submitted == false) {
-        }
-        frame.setthetext("Hello, " + name + ", a " + whatclass + " with " + hp + " HP");
-        updatestats();
-        frame.setVisible(true);
     }
     public static void updatestats() {
         frame.setthelabel (name +
