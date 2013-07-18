@@ -1,7 +1,10 @@
 package rpg;
 
+import java.awt.Graphics2D;
+import java.awt.SplashScreen;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
