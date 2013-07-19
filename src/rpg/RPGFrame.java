@@ -351,7 +351,6 @@ public void encounter() throws InterruptedException {
             }
         }
         else if (yy == 2) {
-            if (RPG.whatclass.equalsIgnoreCase("fighter")){
             int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
                     "Shop", 
                     JOptionPane.YES_NO_CANCEL_OPTION, 
@@ -366,24 +365,6 @@ public void encounter() throws InterruptedException {
                 RPG.inventory[RPG.on] = ll;
                 RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
                 RPG.on++;
-            }
-            }
-            else{
-                int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
-                    "Shop", 
-                    JOptionPane.YES_NO_CANCEL_OPTION, 
-                    JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop, 
-                    RPG.mageshop[RPG.mageshop.length - 1]);
-            if (RPG.gold < RPG.mageshopgold[oo]) {
-                JOptionPane.showMessageDialog(this, "You don't have enough money!");
-            }
-            else{
-                String ll = "Use " + RPG.mageshop[oo];
-                RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                RPG.inventory[RPG.on] = ll;
-                RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                RPG.on++;
-            }
             }
         }
         }
@@ -453,7 +434,7 @@ public void fight(int x, int y, String name) throws InterruptedException {
     }
     }
     if (dead == false) {
-    JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
+    JOptionPane.showMessageDialog(this, "You have defeated the Goblin!");
     RPG.exp = RPG.exp + 5;
     JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
     }
