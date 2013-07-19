@@ -360,8 +360,10 @@ static int x = 0;
                         JOptionPane.showMessageDialog(this, "You have gained a level!");
                         RPG.exp = RPG.exp - 100;
                         RPG.level++;
-                        RPG.strength = RPG.strength + 10;
-                        RPG.magic = RPG.magic + 5;
+                        if(RPG.whatclass.equalsIgnoreCase("Fighter"))
+                            RPG.strength = RPG.strength + 10;
+                        else
+                            RPG.magic = RPG.magic + 10;
                         RPG.maxhp = RPG.maxhp + 15;
                         RPG.hp = RPG.maxhp;
                     } else {
