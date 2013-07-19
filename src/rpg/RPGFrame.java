@@ -196,7 +196,7 @@ static int x = 0;
             y = y + 1;
             jLabel1.setText(x + "," + y);
             cheaterTick();
-            encounter();
+            encounter("N");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -208,7 +208,7 @@ static int x = 0;
             y = y - 1;
             jLabel1.setText(x + "," + y);
             cheaterTick();
-            encounter();
+            encounter("S");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -220,7 +220,7 @@ static int x = 0;
             x = x - 1;
             jLabel1.setText(x + "," + y);
             cheaterTick();
-            encounter();
+            encounter("W");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,7 +232,7 @@ static int x = 0;
         jLabel1.setText(x + "," + y);
         try {
             cheaterTick();
-            encounter();
+            encounter("E");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -242,7 +242,7 @@ static int x = 0;
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             cheaterTick();
-            encounter();
+            encounter("R");
             if (jTextArea1.getText().equals("Nothing has happened")) {
                 jTextArea1.setText("You rested and gained 5 HP");
                 RPG.hp++;
@@ -330,7 +330,7 @@ static int x = 0;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
-    public void encounter() throws InterruptedException {
+    public void encounter(String compass) throws InterruptedException {
         Random chance = new Random();
         int h = chance.nextInt(100) + 1;
         if (h < 21) {
@@ -339,7 +339,7 @@ static int x = 0;
             if (RPG.arguments.equals("-old")) {
                 village v = new village();
                 v.setVisible(true);
-            } else if (h < 81) {
+            } else if (h < 81 && compass != "R") {
                 int yy = JOptionPane.showOptionDialog(RPG.frame,
                         "You have encountered a village",
                         "Village", JOptionPane.YES_NO_CANCEL_OPTION,
