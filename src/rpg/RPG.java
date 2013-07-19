@@ -1,10 +1,7 @@
 package rpg;
 
-import java.awt.Graphics2D;
-import java.awt.SplashScreen;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,6 +30,15 @@ public class RPG {
         5, 10
     };
     static int [] shopgold = {
+        50, 100
+    };
+    static Object[] mageshop = {
+        "Magic Missile", "Potion", 
+    };
+    static int[] mageshoppower = {
+        5, 10
+    };
+    static int [] mageshopgold = {
         50, 100
     };
     static int level = 1;

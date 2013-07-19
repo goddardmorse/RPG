@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package rpg;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -10,15 +14,16 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /**
- * @author GoddardMorse & Mcat12
+ *
+ * @author Isaac
  */
-public class RPGFrame extends javax.swing.JFrame {
+public class NewJFrame extends javax.swing.JFrame {
 static int y = 0;
 static int x = 0;
     /**
-     * Creates new form RPGFrame
+     * Creates new form NewJFrame
      */
-    public RPGFrame() {
+    public NewJFrame() {
         initComponents();
     }
 
@@ -45,39 +50,38 @@ static int x = 0;
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("West");
+        jButton1.setText("west ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("East");
+        jButton2.setText("east ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("North");
+        jButton3.setText("north");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("South");
+        jButton4.setText("south");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Rest");
+        jButton5.setText("rest ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -97,8 +101,8 @@ static int x = 0;
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 255)));
 
-        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
+        jTextArea2.setEditable(false);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setWrapStyleWord(true);
@@ -106,7 +110,7 @@ static int x = 0;
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Save Game");
+        jMenuItem1.setText("save game");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -114,22 +118,13 @@ static int x = 0;
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Load Game");
-        jMenuItem2.setActionCommand("Load Game");
+        jMenuItem2.setText("load game");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Exit");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -187,7 +182,7 @@ static int x = 0;
             jLabel1.setText(x + "," + y);
             encounter();
         } catch (InterruptedException ex) {
-            Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updatestats();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -198,7 +193,7 @@ static int x = 0;
             jLabel1.setText(x + "," + y);
             encounter();
         } catch (InterruptedException ex) {
-            Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updatestats();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -209,7 +204,7 @@ static int x = 0;
             jLabel1.setText(x + "," + y);
             encounter();
         } catch (InterruptedException ex) {
-            Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updatestats();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -220,7 +215,7 @@ static int x = 0;
         try {
             encounter();
         } catch (InterruptedException ex) {
-            Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updatestats();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -228,27 +223,61 @@ static int x = 0;
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             encounter();
-            if (jTextArea1.getText().equals("Nothing has happened")) {
-                jTextArea1.setText("You rested and gained 5 HP");
+            if (jTextArea1.getText().equals("nothing has happened")) {
+                jTextArea1.setText("you rested and gained 5 hp");
                 RPG.hp++;
             }
         } catch (InterruptedException ex) {
-            Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updatestats();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        SaveLoadEngine.save();
+            //File files = new File("C:/RPG/save.sav");
+            //File other = new File("C:/RPG/inv.sav");
+            //File invto = new File("C:/RPG/inv2.sav");
+            SaveLoadEngine.save();
+        /*try {
+            BufferedWriter gg = new BufferedWriter(new FileWriter(files));
+            BufferedWriter ff = new BufferedWriter(new FileWriter(other));
+            BufferedWriter hh = new BufferedWriter(new FileWriter(invto));
+            gg.write(RPG.name); 
+            gg.newLine();
+            gg.write(Integer.toString(RPG.hp)); 
+            gg.newLine();
+            gg.write(Integer.toString(RPG.maxhp)); 
+            gg.newLine();
+            gg.write(Integer.toString(RPG.strength)); 
+            gg.newLine();
+            gg.write(Integer.toString(RPG.magic));
+            gg.newLine();
+            gg.write(Integer.toString(RPG.initiative));
+            gg.newLine();
+            gg.write(RPG.whatclass);
+            gg.newLine();
+            gg.write(Integer.toString(RPG.exp)); 
+            gg.newLine();
+            gg.write(Integer.toString(RPG.level));
+            gg.newLine();
+            gg.close();
+            for(int i = 0; i < RPG.inventory.length; i++) {
+                ff.write(RPG.inventory[i].toString());
+                ff.newLine();
+            }
+            for (int g = 0; g < RPG.inventorypower.length; g++) {
+                hh.write (RPG.inventorypower[g]);
+                hh.newLine();
+            }
+            ff.close();
+        } catch (IOException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         SaveLoadEngine.load();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,13 +300,13 @@ static int x = 0;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RPGFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RPGFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RPGFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RPGFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -287,7 +316,7 @@ static int x = 0;
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new RPGFrame().setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
     }
@@ -302,7 +331,6 @@ static int x = 0;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
@@ -312,7 +340,7 @@ public void encounter() throws InterruptedException {
     Random chance = new Random();
     int h = chance.nextInt(100) + 1;
     if (h<21) {
-        jTextArea1.setText("Nothing has happened");
+        jTextArea1.setText("nothing has happened");
     }
     else if (h<51) {
         if (RPG.arguments.equals("-old")) {
@@ -321,24 +349,24 @@ public void encounter() throws InterruptedException {
         }
         else if (h<81) {
         int yy = JOptionPane.showOptionDialog(RPG.frame, 
-                "You have encountered a village", 
-                "Village", JOptionPane.YES_NO_CANCEL_OPTION, 
+                "you have encountered a village", 
+                "village", JOptionPane.YES_NO_CANCEL_OPTION, 
                 JOptionPane.INFORMATION_MESSAGE, 
                 null, 
                 RPG.village, 
                 RPG.village[2]);
         System.out.println(yy);
         if (yy == 0) {
-            RPG.frame.setthetext("You have rested and gained 10 HP");
+            RPG.frame.setthetext("you have rested and gained 10 hp");
         RPG.hp = RPG.hp + 10;
         if (RPG.hp > RPG.maxhp) {
             RPG.hp = RPG.maxhp;
         }
-        RPG.frame.setthetext(RPG.frame.getthetext() + "\nYou now have " + RPG.hp + " HP");
+        RPG.frame.setthetext(RPG.frame.getthetext() + "\nyou now have " + RPG.hp + " hp");
         }
         else if (yy == 1) {
             if (RPG.exp > 99) {
-            JOptionPane.showMessageDialog( this, "You have gained a level!");
+            JOptionPane.showMessageDialog( this, "you have gained a level");
             RPG.exp = RPG.exp - 100;
             RPG.level++;
             RPG.strength = RPG.strength + 10;
@@ -347,56 +375,202 @@ public void encounter() throws InterruptedException {
             RPG.hp = RPG.maxhp;
         }
             else {
-                JOptionPane.showMessageDialog( this, "You need 100 exp");
+                JOptionPane.showMessageDialog( this, "you need 100 exp");
             }
         }
         else if (yy == 2) {
-            if (RPG.whatclass.equalsIgnoreCase("fighter")){
-            int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
-                    "Shop", 
+            JOptionPane.showMessageDialog(this, "Please purchase the 'purchasing' DLC");
+            int oo = JOptionPane.showOptionDialog(this, "what do you wish to buy?", 
+                    "shop", 
                     JOptionPane.YES_NO_CANCEL_OPTION, 
                     JOptionPane.QUESTION_MESSAGE, null, RPG.shop, 
                     RPG.shop[RPG.shop.length - 1]);
             if (RPG.gold < RPG.shopgold[oo]) {
-                JOptionPane.showMessageDialog(this, "You don't have enough money!");
+                JOptionPane.showMessageDialog(this, "you don't have enough money");
             }
-            else{
-                String ll = "Use " + RPG.shop[oo];
-                RPG.gold = RPG.gold - RPG.shopgold[oo];
-                RPG.inventory[RPG.on] = ll;
-                RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
-                RPG.on++;
-            }
-            }
-            else{
-                int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
-                    "Shop", 
-                    JOptionPane.YES_NO_CANCEL_OPTION, 
-                    JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop, 
-                    RPG.mageshop[RPG.mageshop.length - 1]);
-            if (RPG.gold < RPG.mageshopgold[oo]) {
-                JOptionPane.showMessageDialog(this, "You don't have enough money!");
-            }
-            else{
-                String ll = "Use " + RPG.mageshop[oo];
-                RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                RPG.inventory[RPG.on] = ll;
-                RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                RPG.on++;
-            }
-            }
+            String ll = "use " + RPG.shop[oo];
+                    RPG.gold = RPG.gold - RPG.shopgold[oo];
+                    RPG.inventory[RPG.on] = ll;
+                    RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
+                    RPG.on++;
         }
         }
     }
     else if (h<91) {
         //troll();
-        fight(10, 10, "Troll");
+        fight(10, 10, "troll");
     }
     else {
         //goblin();
-        fight(10, 3, "Goblin");
+        fight(10, 3, "goblin");
     }
 }
+/*
+public void goblin() throws InterruptedException {
+    boolean dead = false;
+    int turn;
+    int goblinhp = 10;
+    JOptionPane.showMessageDialog(this, "a goblin appears!");
+    if (RPG.initiative < 2) {
+    turn = 0;
+    }
+    else {
+        turn = 1;
+    } 
+    
+    if (RPG.whatclass.equals("fighter")) {
+    while (goblinhp > 0 && dead == false) {
+    if (turn == 0) {
+        JOptionPane.showMessageDialog(this, "the goblin attacks!");
+        Random hit = new Random();
+        RPG.hp = RPG.hp - hit.nextInt(3);
+        JOptionPane.showMessageDialog(this, "you have " + RPG.hp + " hp.");
+        if (RPG.hp < 1) {
+            dead = true;
+        }
+        else {
+            turn = 1;
+        }
+    }
+    else {
+        int vv = JOptionPane.showOptionDialog(RPG.frame, 
+                "what do you do?", 
+                "attack", JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                RPG.inventory, 
+                RPG.inventory[RPG.on - 1]);
+        JOptionPane.showMessageDialog(this, "you attack!");
+        Random hits = new Random();
+        goblinhp = goblinhp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+        JOptionPane.showMessageDialog(this, "the goblin now has " + goblinhp + " hp");
+        turn = 0;
+    }
+    }
+    }
+    else {
+        while (goblinhp > 0 && dead == false) {
+    if (turn == 0) {
+        JOptionPane.showMessageDialog(this, "the goblin attacks!");
+        Random hit = new Random();
+        RPG.hp = RPG.hp - hit.nextInt(3);
+        JOptionPane.showMessageDialog(this, "you have " + RPG.hp + " hp.");
+        if (RPG.hp < 1) {
+            dead = true;
+        }
+        else {
+            turn = 1;
+        }
+    }
+    else {
+        int hh = JOptionPane.showOptionDialog(RPG.frame, 
+                "what do you do?", 
+                "attack", JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                RPG.inventory, 
+                RPG.inventory[RPG.on - 1]);
+        JOptionPane.showMessageDialog(this, "you blast the goblin with magic!");
+        Random hits = new Random();
+        goblinhp = goblinhp - hits.nextInt(RPG.magic + RPG.inventorypower[hh]);
+        JOptionPane.showMessageDialog(this, "the goblin now has " + goblinhp + " hp");
+        turn = 0;
+    }
+    }
+    }
+    if (dead == false) {
+    JOptionPane.showMessageDialog(this, "you have defeated the goblin");
+    RPG.exp = RPG.exp + 5;
+    JOptionPane.showMessageDialog(this, "you now have " + RPG.exp + " exp and " + RPG.hp + " hp");
+    }
+    else if (dead == true) {
+    JOptionPane.showMessageDialog(this, "you are no longer alive");
+    System.exit(0);
+    }
+}
+public void troll() throws InterruptedException {
+    boolean dead = false;
+    int turn;
+    int trollhp = 10;
+    JOptionPane.showMessageDialog(this, "a troll appears!");
+    if (RPG.initiative < 2) {
+    turn = 0;
+    }
+    else {
+        turn = 1;
+    } 
+    
+    if (RPG.whatclass.equals("fighter")) {
+    while (trollhp > 0 && dead == false) {
+    if (turn == 0) {
+        JOptionPane.showMessageDialog(this, "the troll attacks!");
+        Random hit = new Random();
+        RPG.hp = RPG.hp - hit.nextInt(10);
+        JOptionPane.showMessageDialog(this, "you have " + RPG.hp + " hp.");
+        if (RPG.hp < 1) {
+            dead = true;
+        }
+        else {
+            turn = 1;
+        }
+    }
+    else {
+        int vv = JOptionPane.showOptionDialog(RPG.frame, 
+                "what do you do?", 
+                "attack", JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                RPG.inventory, 
+                RPG.inventory[RPG.on - 1]);
+        JOptionPane.showMessageDialog(this, "you attack!");
+        Random hits = new Random();
+        trollhp = trollhp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+        JOptionPane.showMessageDialog(this, "the troll now has " + trollhp + " hp");
+        turn = 0;
+    }
+    }
+    }
+    else {
+        while (trollhp > 0 && dead == false) {
+    if (turn == 0) {
+        JOptionPane.showMessageDialog(this, "the troll attacks!");
+        Random hit = new Random();
+        RPG.hp = RPG.hp - hit.nextInt(10);
+        JOptionPane.showMessageDialog(this, "you have " + RPG.hp + " hp.");
+        if (RPG.hp < 1) {
+            dead = true;
+        }
+        else {
+            turn = 1;
+        }
+    }
+    else {
+        int hh = JOptionPane.showOptionDialog(RPG.frame, 
+                "what do you do?", 
+                "attack", JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                RPG.inventory, 
+                RPG.inventory[RPG.on - 1]);
+        JOptionPane.showMessageDialog(this, "you blast the troll with magic!");
+        Random hits = new Random();
+        trollhp = trollhp - hits.nextInt(RPG.magic + RPG.inventorypower[hh]);
+        JOptionPane.showMessageDialog(this, "the troll now has " + trollhp + " hp");
+        turn = 0;
+    }
+    }
+    }
+    if (dead == false) {
+    JOptionPane.showMessageDialog(this, "you have defeated the troll");
+    RPG.exp = RPG.exp + 5;
+    JOptionPane.showMessageDialog(this, "you now have " + RPG.exp + " exp and " + RPG.hp + " hp");
+    }
+    else if (dead == true) {
+    JOptionPane.showMessageDialog(this, "you are no longer alive");
+    System.exit(0);
+    }
+}
+*/
 public void setthetext(String f) {
     jTextArea1.setText(f);
 }
@@ -411,7 +585,7 @@ public void fight(int x, int y, String name) throws InterruptedException {
     boolean dead = false;
     int turn;
     int hp = x;
-    JOptionPane.showMessageDialog(this, "A " + name + " appears!");
+    JOptionPane.showMessageDialog(this, "a " + name + " appears!");
     if (RPG.initiative < 2) {
     turn = 0;
     }
@@ -421,10 +595,10 @@ public void fight(int x, int y, String name) throws InterruptedException {
     
     while (hp > 0 && dead == false) {
     if (turn == 0) {
-        JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
+        JOptionPane.showMessageDialog(this, "the " + name + " attacks!");
         Random hit = new Random();
         RPG.hp = RPG.hp - hit.nextInt(y);
-        JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
+        JOptionPane.showMessageDialog(this, "you have " + RPG.hp + " hp.");
         if (RPG.hp < 1) {
             dead = true;
         }
@@ -434,31 +608,31 @@ public void fight(int x, int y, String name) throws InterruptedException {
     }
     else {
         int vv = JOptionPane.showOptionDialog(RPG.frame, 
-                "What do you do?", 
-                "Attack", JOptionPane.YES_NO_CANCEL_OPTION, 
+                "what do you do?", 
+                "attack", JOptionPane.YES_NO_CANCEL_OPTION, 
                 JOptionPane.QUESTION_MESSAGE, 
                 null, 
                 RPG.inventory, 
                 RPG.inventory[RPG.on - 1]);
-        JOptionPane.showMessageDialog(this, "You attack!");
+        JOptionPane.showMessageDialog(this, "you attack!");
         Random hits = new Random();
-        if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+        if (RPG.whatclass.equalsIgnoreCase("fighter")) {
             hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
         }
         else {
             hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
         }
-        JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
+        JOptionPane.showMessageDialog(this, "the " + name + " now has " + hp + " hp");
         turn = 0;
     }
     }
     if (dead == false) {
-    JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
+    JOptionPane.showMessageDialog(this, "you have defeated the goblin");
     RPG.exp = RPG.exp + 5;
-    JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+    JOptionPane.showMessageDialog(this, "you now have " + RPG.exp + " exp and " + RPG.hp + " hp");
     }
     else if (dead == true) {
-    JOptionPane.showMessageDialog(this, "You have died...");
+    JOptionPane.showMessageDialog(this, "you are no longer alive");
     System.exit(0);
     }
 }

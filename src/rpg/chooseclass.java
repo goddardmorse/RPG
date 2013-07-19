@@ -36,6 +36,11 @@ public class chooseclass extends javax.swing.JFrame {
         jTextField2.setText("Name:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fighter", "Mage", "" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setText("GridBag");
 
@@ -99,6 +104,10 @@ public class chooseclass extends javax.swing.JFrame {
         RPG.updatestats();
         RPG.frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
