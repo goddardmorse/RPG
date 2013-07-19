@@ -35,6 +35,16 @@ public class RPG {
     static int [] shopgold = {
         50, 100
     };
+    static Object[] mageshop = {
+        "Magic Missile", "Potion", 
+    };
+    static int[] mageshoppower = {
+        5, 10
+    };
+    static int [] mageshopgold = {
+        50, 100
+    };
+
     static int level = 1;
     static int exp = 0;
     static int hp;
