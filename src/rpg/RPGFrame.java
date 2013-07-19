@@ -49,6 +49,7 @@ static int x = 0;
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("West");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
