@@ -14,6 +14,8 @@ import javax.swing.JDialog;
  * @author GoddardMorse & Mcat12
  */
 public class RPG {
+    public static int count = 10;
+    public static boolean cheat = false;
     static String[] village = {
         "Rest at the inn                 ",
         "Level up at the training grounds",
@@ -69,13 +71,29 @@ public class RPG {
         if (arguments.equals("-rick")) {
             try {
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create("http://dafk.net/what"));
-                System.exit(0);
             } catch (IOException ex) {
                 Logger.getLogger(RPG.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
+    }
+    public static void cheats() {
+        int r = JOptionPane.showConfirmDialog(frame, "enter cheat mode?");
+        if (r==0) {
+            JOptionPane.showMessageDialog(frame, "you filthy cheater!");
+            RPG.hp = 1000000;
+            RPG.exp = 1000000;
+            RPG.gold = 1000000;
+            RPG.initiative = 1000000;
+            RPG.level = 1000000;
+            RPG.magic = 1000000;
+            RPG.maxhp = 1000000;
+            RPG.name = "Cheater";
+            RPG.strength = 1000000;
+            RPG.cheat = true;
+            RPG.updateStats();
+        }
     }
     public static void updateStats() {
         frame.setTheLabel (name +

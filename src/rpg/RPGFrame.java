@@ -46,6 +46,7 @@ static int x = 0;
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,7 +116,6 @@ static int x = 0;
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Load Game");
-        jMenuItem2.setActionCommand("Load Game");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -130,6 +130,14 @@ static int x = 0;
             }
         });
         jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("cheats");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
@@ -186,6 +194,15 @@ static int x = 0;
             y = y + 1;
             jLabel1.setText(x + "," + y);
             encounter();
+            if (RPG.cheat) {
+            if (RPG.count == 0) {
+                JOptionPane.showMessageDialog(RPG.frame, "so long, cheater!");
+                System.exit(0);
+            }
+            else {
+                RPG.count = RPG.count - 1;
+            }
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -197,6 +214,15 @@ static int x = 0;
             y = y - 1;
             jLabel1.setText(x + "," + y);
             encounter();
+            if (RPG.cheat) {
+            if (RPG.count == 0) {
+                JOptionPane.showMessageDialog(RPG.frame, "so long, cheater!");
+                System.exit(0);
+            }
+            else {
+                RPG.count = RPG.count - 1;
+            }
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -208,6 +234,15 @@ static int x = 0;
             x = x - 1;
             jLabel1.setText(x + "," + y);
             encounter();
+            if (RPG.cheat) {
+            if (RPG.count == 0) {
+                JOptionPane.showMessageDialog(RPG.frame, "so long, cheater!");
+                System.exit(0);
+            }
+            else {
+                RPG.count = RPG.count - 1;
+            }
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -219,6 +254,15 @@ static int x = 0;
         jLabel1.setText(x + "," + y);
         try {
             encounter();
+            if (RPG.cheat) {
+            if (RPG.count == 0) {
+                JOptionPane.showMessageDialog(RPG.frame, "so long, cheater!");
+                System.exit(0);
+            }
+            else {
+                RPG.count = RPG.count - 1;
+            }
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -231,6 +275,15 @@ static int x = 0;
             if (jTextArea1.getText().equals("Nothing has happened")) {
                 jTextArea1.setText("You rested and gained 5 HP");
                 RPG.hp++;
+            }
+            if (RPG.cheat) {
+            if (RPG.count == 0) {
+                JOptionPane.showMessageDialog(RPG.frame, "so long, cheater!");
+                System.exit(0);
+            }
+            else {
+                RPG.count = RPG.count - 1;
+            }
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,6 +304,10 @@ static int x = 0;
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        RPG.cheats();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,6 +362,7 @@ static int x = 0;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
