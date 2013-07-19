@@ -442,7 +442,7 @@ static int x = 0;
     public void fight(int x, int y, String name) throws InterruptedException {
         boolean dead = false;
         int turn;
-        int hp = x;
+        int hp = (x+y)/2;
         JOptionPane.showMessageDialog(this, "A " + name + " appears!");
         if (RPG.initiative < 2) {
             turn = 0;
@@ -454,7 +454,7 @@ static int x = 0;
             if (turn == 0) {
                 JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
                 Random hit = new Random();
-                RPG.hp = RPG.hp - hit.nextInt(y);
+                RPG.hp = RPG.hp - hit.nextInt((x+y)/4);
                 if(RPG.hp < 0)
                     RPG.hp = 0;
                 JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
