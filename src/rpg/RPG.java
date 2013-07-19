@@ -69,6 +69,7 @@ public class RPG {
         if (arguments.equals("-rick")) {
             try {
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create("http://dafk.net/what"));
+                System.exit(0);
             } catch (IOException ex) {
                 Logger.getLogger(RPG.class.getName()).log(Level.SEVERE, null, ex);
             }
