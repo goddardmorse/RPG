@@ -452,6 +452,8 @@ static int x = 0;
                 JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
                 Random hit = new Random();
                 RPG.hp = RPG.hp - hit.nextInt(y);
+                if(RPG.hp < 0)
+                    RPG.hp = 0;
                 JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
                 if (RPG.hp < 1) {
                     dead = true;
@@ -473,6 +475,8 @@ static int x = 0;
                 } else {
                     hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
                 }
+                if(hp < 0)
+                    hp = 0;
                 JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
                 turn = 0;
             }

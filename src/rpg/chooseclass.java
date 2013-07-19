@@ -89,7 +89,7 @@ public class chooseclass extends javax.swing.JFrame {
             RPG.inventory[0] = "Use fireblast";
             RPG.maxhp = 20;
             RPG.whatclass = "Mage";
-            RPG.magic = 25;
+            RPG.magic = 30;
             RPG.name = jTextField3.getText();
             RPG.initiative = 1;
             System.out.println(RPG.inventory[0].toString());
