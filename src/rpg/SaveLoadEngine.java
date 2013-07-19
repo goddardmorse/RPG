@@ -29,96 +29,96 @@ public class SaveLoadEngine {
     public static void save() {
         if (RPG.cheat) {
             javax.swing.JFileChooser fc = new javax.swing.JFileChooser();
-        fc.setMultiSelectionEnabled(false);
-        fc.setAcceptAllFileFilterUsed(false);
-        fc.setFileFilter(filter);
-        int retval = fc.showSaveDialog(fc);
-        gameProp.setProperty("hp", Integer.toString(1));
-        gameProp.setProperty("name", RPG.name);
-        gameProp.setProperty("level", Integer.toString(1));
-        gameProp.setProperty("gold", Integer.toString(1));
-        gameProp.setProperty("maxhp", Integer.toString(1));
-        gameProp.setProperty("class", RPG.whatclass);
-        gameProp.setProperty("strength", Integer.toString(1));
-        gameProp.setProperty("magic", Integer.toString(1));
-        gameProp.setProperty("initiative", Integer.toString(1));
-        gameProp.setProperty("exp", Integer.toString(1));
-        gameProp.setProperty("positionX", Integer.toString(1));
-        gameProp.setProperty("positionY", Integer.toString(1));
-        gameProp.setProperty("wep1", RPG.inventory[0]);
-        gameProp.setProperty("wep2", RPG.inventory[1]);
-        gameProp.setProperty("wep3", RPG.inventory[2]);
-        gameProp.setProperty("wep4", RPG.inventory[3]);
-        gameProp.setProperty("wep5", RPG.inventory[4]);
-        gameProp.setProperty("wep1pow", Integer.toString(1));
-        gameProp.setProperty("wep2pow", Integer.toString(1));
-        gameProp.setProperty("wep3pow", Integer.toString(1));
-        gameProp.setProperty("wep4pow", Integer.toString(1));
-        gameProp.setProperty("wep5pow", Integer.toString(1));
-        if (retval == JFileChooser.APPROVE_OPTION) {
-            try {
-                File f = fc.getSelectedFile();
-                if (!f.getPath().toLowerCase().endsWith(".properties")) {
-                    f = new File(f.getPath() + ".properties");
+            fc.setMultiSelectionEnabled(false);
+            fc.setAcceptAllFileFilterUsed(false);
+            fc.setFileFilter(filter);
+            int retval = fc.showSaveDialog(fc);
+            gameProp.setProperty("hp", Integer.toString(1));
+            gameProp.setProperty("name", RPG.name);
+            gameProp.setProperty("level", Integer.toString(1));
+            gameProp.setProperty("gold", Integer.toString(1));
+            gameProp.setProperty("maxhp", Integer.toString(1));
+            gameProp.setProperty("class", RPG.whatclass);
+            gameProp.setProperty("strength", Integer.toString(1));
+            gameProp.setProperty("magic", Integer.toString(1));
+            gameProp.setProperty("initiative", Integer.toString(1));
+            gameProp.setProperty("exp", Integer.toString(1));
+            gameProp.setProperty("positionX", Integer.toString(1));
+            gameProp.setProperty("positionY", Integer.toString(1));
+            gameProp.setProperty("wep1", RPG.inventory[0]);
+            gameProp.setProperty("wep2", RPG.inventory[1]);
+            gameProp.setProperty("wep3", RPG.inventory[2]);
+            gameProp.setProperty("wep4", RPG.inventory[3]);
+            gameProp.setProperty("wep5", RPG.inventory[4]);
+            gameProp.setProperty("wep1pow", Integer.toString(1));
+            gameProp.setProperty("wep2pow", Integer.toString(1));
+            gameProp.setProperty("wep3pow", Integer.toString(1));
+            gameProp.setProperty("wep4pow", Integer.toString(1));
+            gameProp.setProperty("wep5pow", Integer.toString(1));
+            if (retval == JFileChooser.APPROVE_OPTION) {
+                try {
+                    File f = fc.getSelectedFile();
+                    if (!f.getPath().toLowerCase().endsWith(".properties")) {
+                        f = new File(f.getPath() + ".properties");
+                    }
+                    gameProp.store(new FileOutputStream(f), null);
+                } catch (IOException ioe) {
+                    System.out.println("You must first open a save file.");
+                    System.out.println(ioe.getMessage());
                 }
-                gameProp.store(new FileOutputStream(f), null);
-            } catch (IOException ioe) {
-                System.out.println("You must first open a save file.");
-                System.out.println(ioe.getMessage());
             }
-        }
         }
         else {
-        javax.swing.JFileChooser fc = new javax.swing.JFileChooser();
-        fc.setMultiSelectionEnabled(false);
-        fc.setAcceptAllFileFilterUsed(false);
-        fc.setFileFilter(filter);
-        int retval = fc.showSaveDialog(fc);
-        gameProp.setProperty("hp", Integer.toString(RPG.hp));
-        gameProp.setProperty("name", RPG.name);
-        gameProp.setProperty("level", Integer.toString(RPG.level));
-        gameProp.setProperty("gold", Integer.toString(RPG.gold));
-        gameProp.setProperty("maxhp", Integer.toString(RPG.maxhp));
-        gameProp.setProperty("class", RPG.whatclass);
-        gameProp.setProperty("strength", Integer.toString(RPG.strength));
-        gameProp.setProperty("magic", Integer.toString(RPG.magic));
-        gameProp.setProperty("initiative", Integer.toString(RPG.initiative));
-        gameProp.setProperty("exp", Integer.toString(RPG.exp));
-        gameProp.setProperty("positionX", Integer.toString(RPGFrame.x));
-        gameProp.setProperty("positionY", Integer.toString(RPGFrame.y));
-        gameProp.setProperty("wep1", RPG.inventory[0]);
-        gameProp.setProperty("wep2", RPG.inventory[1]);
-        gameProp.setProperty("wep3", RPG.inventory[2]);
-        gameProp.setProperty("wep4", RPG.inventory[3]);
-        gameProp.setProperty("wep5", RPG.inventory[4]);
-        gameProp.setProperty("wep1pow", Integer.toString(RPG.inventorypower[0]));
-        gameProp.setProperty("wep2pow", Integer.toString(RPG.inventorypower[1]));
-        gameProp.setProperty("wep3pow", Integer.toString(RPG.inventorypower[2]));
-        gameProp.setProperty("wep4pow", Integer.toString(RPG.inventorypower[3]));
-        gameProp.setProperty("wep5pow", Integer.toString(RPG.inventorypower[4]));
-        /*
-         * Here, add in:
-         * 
-         * gameProp.setProperty(String keyword, String value);
-         * 
-         * for all the character's properties so it gets the values of the 
-         * character for the new .properties file.
-         * ex.
-         * gameProp.setProperty("hp", RPG.character.getHp());
-         */
-        if (retval == JFileChooser.APPROVE_OPTION) {
-            try {
-                File f = fc.getSelectedFile();
-                if (!f.getPath().toLowerCase().endsWith(".properties")) {
-                    f = new File(f.getPath() + ".properties");
+            javax.swing.JFileChooser fc = new javax.swing.JFileChooser();
+            fc.setMultiSelectionEnabled(false);
+            fc.setAcceptAllFileFilterUsed(false);
+            fc.setFileFilter(filter);
+            int retval = fc.showSaveDialog(fc);
+            gameProp.setProperty("hp", Integer.toString(RPG.hp));
+            gameProp.setProperty("name", RPG.name);
+            gameProp.setProperty("level", Integer.toString(RPG.level));
+            gameProp.setProperty("gold", Integer.toString(RPG.gold));
+            gameProp.setProperty("maxhp", Integer.toString(RPG.maxhp));
+            gameProp.setProperty("class", RPG.whatclass);
+            gameProp.setProperty("strength", Integer.toString(RPG.strength));
+            gameProp.setProperty("magic", Integer.toString(RPG.magic));
+            gameProp.setProperty("initiative", Integer.toString(RPG.initiative));
+            gameProp.setProperty("exp", Integer.toString(RPG.exp));
+            gameProp.setProperty("positionX", Integer.toString(RPGFrame.x));
+            gameProp.setProperty("positionY", Integer.toString(RPGFrame.y));
+            gameProp.setProperty("wep1", RPG.inventory[0]);
+            gameProp.setProperty("wep2", RPG.inventory[1]);
+            gameProp.setProperty("wep3", RPG.inventory[2]);
+            gameProp.setProperty("wep4", RPG.inventory[3]);
+            gameProp.setProperty("wep5", RPG.inventory[4]);
+            gameProp.setProperty("wep1pow", Integer.toString(RPG.inventorypower[0]));
+            gameProp.setProperty("wep2pow", Integer.toString(RPG.inventorypower[1]));
+            gameProp.setProperty("wep3pow", Integer.toString(RPG.inventorypower[2]));
+            gameProp.setProperty("wep4pow", Integer.toString(RPG.inventorypower[3]));
+            gameProp.setProperty("wep5pow", Integer.toString(RPG.inventorypower[4]));
+            /*
+             * Here, add in:
+             * 
+             * gameProp.setProperty(String keyword, String value);
+             * 
+             * for all the character's properties so it gets the values of the 
+             * character for the new .properties file.
+             * ex.
+             * gameProp.setProperty("hp", RPG.character.getHp());
+             */
+            if (retval == JFileChooser.APPROVE_OPTION) {
+                try {
+                    File f = fc.getSelectedFile();
+                    if (!f.getPath().toLowerCase().endsWith(".properties")) {
+                        f = new File(f.getPath() + ".properties");
+                    }
+                    gameProp.store(new FileOutputStream(f), null);
+                } catch (IOException ioe) {
+                    System.out.println("You must first open a save file.");
+                    System.out.println(ioe.getMessage());
                 }
-                gameProp.store(new FileOutputStream(f), null);
-            } catch (IOException ioe) {
-                System.out.println("You must first open a save file.");
-                System.out.println(ioe.getMessage());
             }
         }
-    }
     }
 
     /**

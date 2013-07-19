@@ -79,20 +79,20 @@ public class RPG {
         v.setVisible(true);
     }
     public static void cheats() {
-        int r = JOptionPane.showConfirmDialog(frame, "enter cheat mode?");
+        int r = JOptionPane.showConfirmDialog(frame, "Enter cheat mode?");
         if (r==0) {
-            JOptionPane.showMessageDialog(frame, "you filthy cheater!");
-            RPG.hp = 1000000;
-            RPG.exp = 1000000;
-            RPG.gold = 1000000;
-            RPG.initiative = 1000000;
-            RPG.level = 1000000;
-            RPG.magic = 1000000;
-            RPG.maxhp = 1000000;
-            RPG.name = "Cheater";
-            RPG.strength = 1000000;
-            RPG.cheat = true;
-            RPG.updateStats();
+            JOptionPane.showMessageDialog(frame, "You filthy cheater!");
+            hp = 1000000;
+            exp = 1000000;
+            gold = 1000000;
+            initiative = 1000000;
+            level = 1000000;
+            magic = 1000000;
+            maxhp = 1000000;
+            name = "Cheater";
+            strength = 1000000;
+            cheat = true;
+            updateStats();
         }
     }
     public static void updateStats() {
