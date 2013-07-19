@@ -14,15 +14,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Mcat12
  */
 public class SaveLoadEngine {
-	/*
-	 * Edit the save method to set all the character's properties you need
-	 * to save (ex. name=GridBag), then edit the load method to modify your 
-	 * variables according to the .properties file loaded.
-	 */
-	
-	   protected static FileNameExtensionFilter filter = new FileNameExtensionFilter("Properties File", "properties");
+    /*
+     * Edit the save method to set all the character's properties you need
+     * to save (ex. name=GridBag), then edit the load method to modify your 
+     * variables according to the .properties file loaded.
+     */
+    
+    protected static FileNameExtensionFilter filter = new FileNameExtensionFilter("Properties File", "properties");
     protected static Properties gameProp = new Properties();
-
+    
     /**
      * Save Method
      */
