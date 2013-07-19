@@ -189,7 +189,7 @@ static int x = 0;
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RPG.updatestats();
+        RPG.updateStats();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -200,7 +200,7 @@ static int x = 0;
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RPG.updatestats();
+        RPG.updateStats();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -211,7 +211,7 @@ static int x = 0;
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RPG.updatestats();
+        RPG.updateStats();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -222,7 +222,7 @@ static int x = 0;
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RPG.updatestats();
+        RPG.updateStats();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -235,7 +235,7 @@ static int x = 0;
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RPG.updatestats();
+        RPG.updateStats();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -244,6 +244,8 @@ static int x = 0;
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         SaveLoadEngine.load();
+        RPG.updateStats();
+        updateLocation();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -308,156 +310,149 @@ static int x = 0;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
-public void encounter() throws InterruptedException {
-    Random chance = new Random();
-    int h = chance.nextInt(100) + 1;
-    if (h<21) {
-        jTextArea1.setText("Nothing has happened");
-    }
-    else if (h<51) {
-        if (RPG.arguments.equals("-old")) {
-            village v = new village();
-            v.setVisible(true);
-        }
-        else if (h<81) {
-            int yy = JOptionPane.showOptionDialog(RPG.frame, 
-                    "You have encountered a village", 
-                    "Village", JOptionPane.YES_NO_CANCEL_OPTION, 
-                    JOptionPane.INFORMATION_MESSAGE, 
-                    null, 
-                    RPG.village, 
-                    RPG.village[2]);
-            System.out.println(yy);
-            if (yy == 0) {
-                RPG.frame.setthetext("You have rested and gained 10 HP");
-            RPG.hp = RPG.hp + 10;
-            if (RPG.hp > RPG.maxhp) {
-                RPG.hp = RPG.maxhp;
-            }
-            RPG.frame.setthetext(RPG.frame.getthetext() + "\nYou now have " + RPG.hp + " HP");
-            }
-            else if (yy == 1) {
-                if (RPG.exp > 99) {
-                    JOptionPane.showMessageDialog( this, "You have gained a level!");
-                    RPG.exp = RPG.exp - 100;
-                    RPG.level++;
-                    RPG.strength = RPG.strength + 10;
-                    RPG.magic = RPG.magic + 5;
-                    RPG.maxhp = RPG.maxhp + 15;
-                    RPG.hp = RPG.maxhp;
-                }
-                else {
-                    JOptionPane.showMessageDialog( this, "You need 100 exp");
-                }
-            }
-            else if (yy == 2) {
-                if (RPG.whatclass.equalsIgnoreCase("fighter")){
-                    int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
-                            "Shop", 
-                            JOptionPane.YES_NO_CANCEL_OPTION, 
-                            JOptionPane.QUESTION_MESSAGE, null, RPG.shop, 
-                            RPG.shop[RPG.shop.length - 1]);
-                    if (RPG.gold < RPG.shopgold[oo]) {
-                        JOptionPane.showMessageDialog(this, "You don't have enough money!");
+    public void encounter() throws InterruptedException {
+        Random chance = new Random();
+        int h = chance.nextInt(100) + 1;
+        if (h < 21) {
+            jTextArea1.setText("Nothing has happened");
+        } else if (h < 51) {
+            if (RPG.arguments.equals("-old")) {
+                village v = new village();
+                v.setVisible(true);
+            } else if (h < 81) {
+                int yy = JOptionPane.showOptionDialog(RPG.frame,
+                        "You have encountered a village",
+                        "Village", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        RPG.village,
+                        RPG.village[2]);
+                System.out.println(yy);
+                if (yy == 0) {
+                    RPG.frame.setTheText("You have rested and gained 10 HP");
+                    RPG.hp = RPG.hp + 10;
+                    if (RPG.hp > RPG.maxhp) {
+                        RPG.hp = RPG.maxhp;
                     }
-                    else{
-                        String ll = "Use " + RPG.shop[oo];
-                        RPG.gold = RPG.gold - RPG.shopgold[oo];
-                        RPG.inventory[RPG.on] = ll;
-                        RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
-                        RPG.on++;
+                    RPG.frame.setTheText(RPG.frame.getTheText() + "\nYou now have " + RPG.hp + " HP");
+                } else if (yy == 1) {
+                    if (RPG.exp > 99) {
+                        JOptionPane.showMessageDialog(this, "You have gained a level!");
+                        RPG.exp = RPG.exp - 100;
+                        RPG.level++;
+                        RPG.strength = RPG.strength + 10;
+                        RPG.magic = RPG.magic + 5;
+                        RPG.maxhp = RPG.maxhp + 15;
+                        RPG.hp = RPG.maxhp;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "You need 100 exp");
                     }
-                }
-                else{
-                    int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?", 
-                            "Shop", 
-                            JOptionPane.YES_NO_CANCEL_OPTION, 
-                            JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop, 
-                            RPG.mageshop[RPG.mageshop.length - 1]);
-                    if (RPG.gold < RPG.mageshopgold[oo]) {
-                        JOptionPane.showMessageDialog(this, "You don't have enough money!");
-                    }
-                    else{
-                        String ll = "Use " + RPG.mageshop[oo];
-                        RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                        RPG.inventory[RPG.on] = ll;
-                        RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                        RPG.on++;
+                } else if (yy == 2) {
+                    if (RPG.whatclass.equalsIgnoreCase("fighter")) {
+                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
+                                "Shop",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null, RPG.shop,
+                                RPG.shop[RPG.shop.length - 1]);
+                        if (RPG.gold < RPG.shopgold[oo]) {
+                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
+                        } else {
+                            String ll = "Use " + RPG.shop[oo];
+                            RPG.gold = RPG.gold - RPG.shopgold[oo];
+                            RPG.inventory[RPG.on] = ll;
+                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
+                            RPG.on++;
+                        }
+                    } else {
+                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
+                                "Shop",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop,
+                                RPG.mageshop[RPG.mageshop.length - 1]);
+                        if (RPG.gold < RPG.mageshopgold[oo]) {
+                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
+                        } else {
+                            String ll = "Use " + RPG.mageshop[oo];
+                            RPG.gold = RPG.gold - RPG.mageshopgold[oo];
+                            RPG.inventory[RPG.on] = ll;
+                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
+                            RPG.on++;
+                        }
                     }
                 }
             }
+        } else if (h < 91) {
+            fight(10, 10, "Troll");
+        } else {
+            fight(10, 3, "Goblin");
         }
     }
-    else if (h<91) {
-        fight(10, 10, "Troll");
+
+    public void setTheText(String f) {
+        jTextArea1.setText(f);
     }
-    else {
-        fight(10, 3, "Goblin");
+
+    public void setTheLabel(String o) {
+        jTextArea2.setText(o);
     }
-}
-public void setthetext(String f) {
-    jTextArea1.setText(f);
-}
-public void setthelabel (String o) {
-    jTextArea2.setText(o);
-}
-public String getthetext() {
-    String f = jTextArea1.getText();
-    return f;
-}
-public void fight(int x, int y, String name) throws InterruptedException {
-    boolean dead = false;
-    int turn;
-    int hp = x;
-    JOptionPane.showMessageDialog(this, "A " + name + " appears!");
-    if (RPG.initiative < 2) {
-        turn = 0;
+
+    public String getTheText() {
+        String f = jTextArea1.getText();
+        return f;
     }
-    else {
-        turn = 1;
-    } 
-    
-    while (hp > 0 && dead == false) {
-        if (turn == 0) {
-            JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
-            Random hit = new Random();
-            RPG.hp = RPG.hp - hit.nextInt(y);
-            JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
-            if (RPG.hp < 1) {
-                dead = true;
-            }
-            else {
-                turn = 1;
-            }
-        }
-        else {
-            int vv = JOptionPane.showOptionDialog(RPG.frame, 
-                    "What do you do?", 
-                    "Attack", JOptionPane.YES_NO_CANCEL_OPTION, 
-                    JOptionPane.QUESTION_MESSAGE, 
-                    null, 
-                    RPG.inventory, 
-                    RPG.inventory[RPG.on - 1]);
-            JOptionPane.showMessageDialog(this, "You attack!");
-            Random hits = new Random();
-            if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
-                hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
-            }
-            else {
-                hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
-            }
-            JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
+
+    public void updateLocation() {
+        jLabel1.setText(x + "," + y);
+    }
+
+    public void fight(int x, int y, String name) throws InterruptedException {
+        boolean dead = false;
+        int turn;
+        int hp = x;
+        JOptionPane.showMessageDialog(this, "A " + name + " appears!");
+        if (RPG.initiative < 2) {
             turn = 0;
+        } else {
+            turn = 1;
+        }
+
+        while (hp > 0 && dead == false) {
+            if (turn == 0) {
+                JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
+                Random hit = new Random();
+                RPG.hp = RPG.hp - hit.nextInt(y);
+                JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
+                if (RPG.hp < 1) {
+                    dead = true;
+                } else {
+                    turn = 1;
+                }
+            } else {
+                int vv = JOptionPane.showOptionDialog(RPG.frame,
+                        "What do you do?",
+                        "Attack", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        RPG.inventory,
+                        RPG.inventory[RPG.on - 1]);
+                JOptionPane.showMessageDialog(this, "You attack!");
+                Random hits = new Random();
+                if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+                    hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+                } else {
+                    hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
+                }
+                JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
+                turn = 0;
+            }
+        }
+        if (dead == false) {
+            JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
+            RPG.exp = RPG.exp + 5;
+            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+        } else if (dead == true) {
+            JOptionPane.showMessageDialog(this, "You have died...");
+            System.exit(0);
         }
     }
-    if (dead == false) {
-        JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
-        RPG.exp = RPG.exp + 5;
-        JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
-    }
-    else if (dead == true) {
-        JOptionPane.showMessageDialog(this, "You have died...");
-        System.exit(0);
-    }
-}
 }

@@ -95,8 +95,8 @@ public class chooseclass extends javax.swing.JFrame {
         }
         RPG.submitted = true;
         this.setVisible(false);
-        RPG.frame.setthetext("Hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
-        RPG.updatestats();
+        RPG.frame.setTheText("Hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
+        RPG.updateStats();
         RPG.frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -76,8 +76,8 @@ public class RPG {
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
     }
-    public static void updatestats() {
-        frame.setthelabel (name +
+    public static void updateStats() {
+        frame.setTheLabel (name +
                 "\nLevel: " + level +
                 "\nExp: " + exp +
                 "\nHP: " + hp + 
@@ -86,5 +86,4 @@ public class RPG {
                 "\nInitiative: " + initiative +
                 "\nGold:" + gold);
     }
-
 }
