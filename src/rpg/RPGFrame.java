@@ -245,7 +245,10 @@ static int x = 0;
             encounter("R");
             if (jTextArea1.getText().equals("Nothing has happened")) {
                 jTextArea1.setText("You rested and gained 5 HP");
-                RPG.hp++;
+                RPG.hp += 5;
+                if (RPG.hp > RPG.maxhp) {
+                    RPG.hp = RPG.maxhp;
+                }
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -350,7 +353,7 @@ static int x = 0;
                 System.out.println(yy);
                 if (yy == 0) {
                     RPG.frame.setTheText("You have rested and gained 10 HP");
-                    RPG.hp = RPG.hp + 10;
+                    RPG.hp += 10;
                     if (RPG.hp > RPG.maxhp) {
                         RPG.hp = RPG.maxhp;
                     }
