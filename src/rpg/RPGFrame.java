@@ -13,6 +13,18 @@ import javax.swing.WindowConstants;
  * @author GoddardMorse & Mcat12
  */
 public class RPGFrame extends javax.swing.JFrame {
+    public enum Monster {
+        TROLL(10, 10, "troll"),
+        GOBLIN(10, 3, "goblin");
+        int hp;
+        int pow;
+        String name;
+        Monster (int i, int t, String b) {
+            hp = i;
+            pow = t;
+            name = b;
+        }
+    }
 static int y = 0;
 static int x = 0;
     /**
@@ -382,10 +394,10 @@ static int x = 0;
                         if (RPG.gold < RPG.shopgold[oo]) {
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
-                            String ll = "Use " + RPG.shop[oo];
                             RPG.gold = RPG.gold - RPG.shopgold[oo];
-                            RPG.inventory[RPG.on] = ll;
+                            RPG.inventory[RPG.on - 1] = "Use " + RPG.shop[oo];
                             RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
+                            RPG.inventorytype[RPG.on - 1] = RPG.shoptype[oo];
                             RPG.on++;
                         }
                     } else {
@@ -397,19 +409,19 @@ static int x = 0;
                         if (RPG.gold < RPG.mageshopgold[oo]) {
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
-                            String ll = "Use " + RPG.mageshop[oo];
                             RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                            RPG.inventory[RPG.on] = ll;
+                            RPG.inventory[RPG.on - 1] = "Use " + RPG.mageshop[oo];
                             RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
+                            RPG.inventorytype[RPG.on - 1] = RPG.mageshoptype[oo];
                             RPG.on++;
                         }
                     }
                 }
             }
         } else if (h < 91) {
-            fight(10, 10, "Troll");
+            fight(Monster.TROLL);
         } else {
-            fight(10, 3, "Goblin");
+            fight(Monster.GOBLIN);
         }
     }
 
@@ -442,7 +454,7 @@ static int x = 0;
         }
     }
 
-    public void fight(int x, int y, String name) throws InterruptedException {
+    /*public void fight(int x, int y, String name) throws InterruptedException {
         boolean dead = false;
         int turn;
         int hp = (x+y)/2;
@@ -489,6 +501,79 @@ static int x = 0;
         }
         if (dead == false) {
             JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
+            RPG.exp = RPG.exp + 5;
+            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+        } else if (dead == true) {
+            JOptionPane.showMessageDialog(this, "You have died...");
+            System.exit(0);
+        }
+    }*/
+    public void fight (Monster m) {
+        boolean dead = false;
+        final int monster = 0;
+        final int player = 1;
+        int turn;
+        int hp = m.hp;
+        JOptionPane.showMessageDialog(this, "A " + m.name + " appears!");
+        if (RPG.initiative > 2) {
+            turn = player;
+        } else {
+            turn = monster;
+        }
+
+        while (hp > 0 && dead == false) {
+            switch (turn) {
+                case monster:
+                    JOptionPane.showMessageDialog(this, "The " + m.name + " attacks!");
+                Random hit = new Random();
+                RPG.hp = RPG.hp - hit.nextInt(m.pow);
+                JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
+                if (RPG.hp <= 0) {
+                    dead = true;
+                } else {
+                    turn = player;
+                }
+                    break;
+                case player:
+                    int vv = JOptionPane.showOptionDialog(RPG.frame,
+                        "What do you do?",
+                        "Attack", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        RPG.inventory,
+                        RPG.inventory[RPG.on - 1]);
+                    switch (RPG.inventorytype[vv]) {
+                        default:
+                            JOptionPane.showMessageDialog(this, "that is not a valid action");
+                            break;
+                        case RPG.attack:
+                            JOptionPane.showMessageDialog(this, "You attack!");
+                Random hits = new Random();
+                if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+                    hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+                } else {
+                    hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
+                }
+                JOptionPane.showMessageDialog(this, "The " + m.name + " now has " + hp + " HP");
+                turn = monster;
+                            break;
+                        case RPG.heal:
+                            RPG.hp = RPG.hp + RPG.inventorypower[vv];
+                            if (RPG.hp > RPG.maxhp) {
+                                RPG.hp = RPG.maxhp;
+                            }
+                            JOptionPane.showMessageDialog(this, "The " + RPG.inventory[vv] + " gives you " + RPG.inventorypower[vv] + " HP.");
+                            JOptionPane.showMessageDialog(this, "You now have " + RPG.hp + " HP.");
+                            turn = monster;
+                            break;
+                    }
+                    break;
+                    
+            }
+                
+        }
+        if (dead == false) {
+            JOptionPane.showMessageDialog(this, "You have defeated the " + m.name + "!");
             RPG.exp = RPG.exp + 5;
             JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
         } else if (dead == true) {

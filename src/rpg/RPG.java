@@ -21,18 +21,26 @@ public class RPG {
         "Level up at the training grounds",
         "Get a new weapon at the shop    "
     };
+    public static final int attack = 1;
+    public static final int heal = 2;
     static String[] inventory = {
         " ", " ", " ", " ", " "
     };
     static int[] inventorypower = {
         0, 0, 0, 0, 0
     };
-    static int on = 1;
+    static int[] inventorytype = {
+        1, 0, 0, 0, 0
+    };
+    static int on = 2;
     static Object[] shop = {
         "Greatsword", "Potion", 
     };
     static int[] shoppower = {
         5, 10
+    };
+    static int[] shoptype = {
+        attack, heal
     };
     static int [] shopgold = {
         50, 100
@@ -42,6 +50,9 @@ public class RPG {
     };
     static int[] mageshoppower = {
         5, 10
+    };
+    static int[] mageshoptype = {
+        attack, heal
     };
     static int [] mageshopgold = {
         50, 100
