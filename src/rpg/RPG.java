@@ -41,7 +41,7 @@ public class RPG {
         "Magic Missile", "Potion", 
     };
     static int[] mageshoppower = {
-        5, -20
+        5, 10
     };
     static int [] mageshopgold = {
         50, 100

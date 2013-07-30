@@ -385,7 +385,7 @@ static int x = 0;
                             String ll = "Use " + RPG.shop[oo];
                             RPG.gold = RPG.gold - RPG.shopgold[oo];
                             RPG.inventory[RPG.on] = ll;
-                            RPG.inventorypower[RPG.on] = RPG.shoppower[oo];
+                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
                             RPG.on++;
                         }
                     } else {
@@ -400,7 +400,7 @@ static int x = 0;
                             String ll = "Use " + RPG.mageshop[oo];
                             RPG.gold = RPG.gold - RPG.mageshopgold[oo];
                             RPG.inventory[RPG.on] = ll;
-                            RPG.inventorypower[RPG.on] = RPG.mageshoppower[oo];
+                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
                             RPG.on++;
                         }
                     }
@@ -445,7 +445,7 @@ static int x = 0;
     public void fight(int x, int y, String name) throws InterruptedException {
         boolean dead = false;
         int turn;
-        int hp = x+y;
+        int hp = (x+y)/2;
         JOptionPane.showMessageDialog(this, "A " + name + " appears!");
         if (RPG.initiative < 2) {
             turn = 0;
@@ -457,7 +457,7 @@ static int x = 0;
             if (turn == 0) {
                 JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
                 Random hit = new Random();
-                RPG.hp = RPG.hp - hit.nextInt((x+y)/2);
+                RPG.hp = RPG.hp - hit.nextInt((x+y)/4);
                 if(RPG.hp < 0)
                     RPG.hp = 0;
                 JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
@@ -474,26 +474,16 @@ static int x = 0;
                         null,
                         RPG.inventory,
                         RPG.inventory[RPG.on - 1]);
-                System.out.println(RPG.inventory[vv]);
-                if(RPG.inventorypower[vv] == -20){
-                    JOptionPane.showMessageDialog(this, "You drank a potion, +20HP!");
-                    RPG.hp += 20;
-                    if (RPG.hp > RPG.maxhp) {
-                        RPG.hp = RPG.maxhp;
-                    }
+                JOptionPane.showMessageDialog(this, "You attack!");
+                Random hits = new Random();
+                if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+                    hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+                } else {
+                    hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
                 }
-                else{
-                    JOptionPane.showMessageDialog(this, "You attack!");
-                    Random hits = new Random();
-                    if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
-                        hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
-                    } else {
-                        hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
-                    }
-                    if(hp < 0)
-                        hp = 0;
-                    JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
-                }
+                if(hp < 0)
+                    hp = 0;
+                JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
                 turn = 0;
             }
         }
