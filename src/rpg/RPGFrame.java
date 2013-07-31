@@ -354,69 +354,8 @@ static int x = 0;
             if (RPG.arguments.equals("-old")) {
                 village v = new village();
                 v.setVisible(true);
-            } else if (h < 81 && compass != "R") {
-                int yy = JOptionPane.showOptionDialog(RPG.frame,
-                        "You have encountered a village",
-                        "Village", JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.INFORMATION_MESSAGE,
-                        null,
-                        RPG.village,
-                        RPG.village[2]);
-                System.out.println(yy);
-                if (yy == 0) {
-                    RPG.frame.setTheText("You have rested and gained 10 HP");
-                    RPG.hp += 10;
-                    if (RPG.hp > RPG.maxhp) {
-                        RPG.hp = RPG.maxhp;
-                    }
-                    RPG.frame.setTheText(RPG.frame.getTheText() + "\nYou now have " + RPG.hp + " HP");
-                } else if (yy == 1) {
-                    if (RPG.exp > 99) {
-                        JOptionPane.showMessageDialog(this, "You have gained a level!");
-                        RPG.exp = RPG.exp - 100;
-                        RPG.level++;
-                        if(RPG.whatclass.equalsIgnoreCase("Fighter"))
-                            RPG.strength = RPG.strength + 10;
-                        else
-                            RPG.magic = RPG.magic + 10;
-                        RPG.maxhp = RPG.maxhp + 15;
-                        RPG.hp = RPG.maxhp;
-                    } else {
-                        JOptionPane.showMessageDialog(this, "You need 100 exp");
-                    }
-                } else if (yy == 2) {
-                    if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
-                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
-                                "Shop",
-                                JOptionPane.YES_NO_CANCEL_OPTION,
-                                JOptionPane.QUESTION_MESSAGE, null, RPG.shop,
-                                RPG.shop[RPG.shop.length - 1]);
-                        if (RPG.gold < RPG.shopgold[oo]) {
-                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
-                        } else {
-                            RPG.gold = RPG.gold - RPG.shopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.shop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.shoptype[oo];
-                            RPG.on++;
-                        }
-                    } else {
-                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
-                                "Shop",
-                                JOptionPane.YES_NO_CANCEL_OPTION,
-                                JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop,
-                                RPG.mageshop[RPG.mageshop.length - 1]);
-                        if (RPG.gold < RPG.mageshopgold[oo]) {
-                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
-                        } else {
-                            RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.mageshop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.mageshoptype[oo];
-                            RPG.on++;
-                        }
-                    }
-                }
+            } else if (h < 81 && !compass.equals("R")) {
+                village();
             }
         } else if (h < 91) {
             fight(Monster.TROLL);
@@ -581,4 +520,68 @@ static int x = 0;
             System.exit(0);
         }
     }
+    public void village() {
+        int yy = JOptionPane.showOptionDialog(RPG.frame,
+                        "You have encountered a village",
+                        "Village", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        RPG.village,
+                        RPG.village[2]);
+                System.out.println(yy);
+                if (yy == 0) {
+                    RPG.frame.setTheText("You have rested and gained 10 HP");
+                    RPG.hp += 10;
+                    if (RPG.hp > RPG.maxhp) {
+                        RPG.hp = RPG.maxhp;
+                    }
+                    RPG.frame.setTheText(RPG.frame.getTheText() + "\nYou now have " + RPG.hp + " HP");
+                } else if (yy == 1) {
+                    if (RPG.exp > 99) {
+                        JOptionPane.showMessageDialog(this, "You have gained a level!");
+                        RPG.exp = RPG.exp - 100;
+                        RPG.level++;
+                        if(RPG.whatclass.equalsIgnoreCase("Fighter"))
+                            RPG.strength = RPG.strength + 10;
+                        else
+                            RPG.magic = RPG.magic + 10;
+                        RPG.maxhp = RPG.maxhp + 15;
+                        RPG.hp = RPG.maxhp;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "You need 100 exp");
+                    }
+                } else if (yy == 2) {
+                    if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
+                                "Shop",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null, RPG.shop,
+                                RPG.shop[RPG.shop.length - 1]);
+                        if (RPG.gold < RPG.shopgold[oo]) {
+                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
+                        } else {
+                            RPG.gold = RPG.gold - RPG.shopgold[oo];
+                            RPG.inventory[RPG.on - 1] = "Use " + RPG.shop[oo];
+                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
+                            RPG.inventorytype[RPG.on - 1] = RPG.shoptype[oo];
+                            RPG.on++;
+                        }
+                    } else {
+                        int oo = JOptionPane.showOptionDialog(this, "What do you wish to buy?",
+                                "Shop",
+                                JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null, RPG.mageshop,
+                                RPG.mageshop[RPG.mageshop.length - 1]);
+                        if (RPG.gold < RPG.mageshopgold[oo]) {
+                            JOptionPane.showMessageDialog(this, "You don't have enough money!");
+                        } else {
+                            RPG.gold = RPG.gold - RPG.mageshopgold[oo];
+                            RPG.inventory[RPG.on - 1] = "Use " + RPG.mageshop[oo];
+                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
+                            RPG.inventorytype[RPG.on - 1] = RPG.mageshoptype[oo];
+                            RPG.on++;
+                        }
+                    }
+                }
+            }
 }
