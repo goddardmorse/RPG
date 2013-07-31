@@ -67,6 +67,7 @@ public class RPG {
     static int magic;
     static String name;
     static String arguments = "-nothing";
+    static boolean zhp = false;
     static boolean submitted = false;
     static int initiative;
     static int maxhp;
@@ -85,6 +86,9 @@ public class RPG {
             } catch (IOException ex) {
                 Logger.getLogger(RPG.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if(arguments.equals("-zhp")){
+            zhp = true;
         }
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);

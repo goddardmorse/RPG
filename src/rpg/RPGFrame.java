@@ -392,61 +392,6 @@ static int x = 0;
             }
         }
     }
-
-    /*public void fight(int x, int y, String name) throws InterruptedException {
-        boolean dead = false;
-        int turn;
-        int hp = (x+y)/2;
-        JOptionPane.showMessageDialog(this, "A " + name + " appears!");
-        if (RPG.initiative < 2) {
-            turn = 0;
-        } else {
-            turn = 1;
-        }
-
-        while (hp > 0 && dead == false) {
-            if (turn == 0) {
-                JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
-                Random hit = new Random();
-                RPG.hp = RPG.hp - hit.nextInt((x+y)/4);
-                if(RPG.hp < 0)
-                    RPG.hp = 0;
-                JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
-                if (RPG.hp < 1) {
-                    dead = true;
-                } else {
-                    turn = 1;
-                }
-            } else {
-                int vv = JOptionPane.showOptionDialog(RPG.frame,
-                        "What do you do?",
-                        "Attack", JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        RPG.inventory,
-                        RPG.inventory[RPG.on - 1]);
-                JOptionPane.showMessageDialog(this, "You attack!");
-                Random hits = new Random();
-                if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
-                    hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
-                } else {
-                    hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
-                }
-                if(hp < 0)
-                    hp = 0;
-                JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
-                turn = 0;
-            }
-        }
-        if (dead == false) {
-            JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
-            RPG.exp = RPG.exp + 5;
-            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
-        } else if (dead == true) {
-            JOptionPane.showMessageDialog(this, "You have died...");
-            System.exit(0);
-        }
-    }*/
     public void fight (Monster m) {
         boolean dead = false;
         final int monster = 0;
@@ -492,6 +437,10 @@ static int x = 0;
                     hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
                 } else {
                     hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
+                }
+                if(RPG.zhp){
+                    if(hp < 0)
+                        hp = 0;
                 }
                 JOptionPane.showMessageDialog(this, "The " + m.name + " now has " + hp + " HP");
                 turn = monster;
