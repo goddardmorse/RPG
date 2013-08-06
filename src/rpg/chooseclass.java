@@ -1,12 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rpg;
 
 /**
- *
- * @author Isaac
+ * @author GoddardMorse & Mcat12
  */
 public class chooseclass extends javax.swing.JFrame {
 
@@ -33,18 +28,19 @@ public class chooseclass extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTextField1.setEditable(false);
-        jTextField1.setText("class:");
+        jTextField1.setText("Class:");
 
         jTextField2.setEditable(false);
-        jTextField2.setText("name:");
+        jTextField2.setText("Name:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "fighter", "mage", "" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fighter", "Mage", "" }));
 
         jTextField3.setText("GridBag");
 
-        jButton1.setText("submit");
+        jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -81,25 +77,28 @@ public class chooseclass extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jComboBox1.getSelectedIndex() == 0) {
             RPG.hp = 50;
-            RPG.inventory[0] = "use sword";
+            RPG.inventory[0] = "Use sword";
             RPG.maxhp = 50;
-            RPG.whatclass = "fighter";
+            RPG.whatclass = "Fighter";
             RPG.strength = 20;
             RPG.name = jTextField3.getText();
             RPG.initiative = 3;
         }
         else if (jComboBox1.getSelectedIndex() == 1) {
             RPG.hp = 20;
-            RPG.inventory[0] = "use fireblast";
+            RPG.inventory[0] = "Use fireblast";
             RPG.maxhp = 20;
-            RPG.whatclass = "mage";
-            RPG.magic = 25;
+            RPG.whatclass = "Mage";
+            RPG.magic = 30;
             RPG.name = jTextField3.getText();
             RPG.initiative = 1;
             System.out.println(RPG.inventory[0].toString());
         }
         RPG.submitted = true;
         this.setVisible(false);
+        RPG.frame.setTheText("Hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
+        RPG.updateStats();
+        RPG.frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
