@@ -81,7 +81,7 @@ public class chooseclass extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jComboBox1.getSelectedIndex() == 0) {
             RPG.hp = 50;
-            RPG.inventory[0] = "Use sword";
+            RPG.inventory[0] = "Use Sword";
             RPG.maxhp = 50;
             RPG.whatclass = "Fighter";
             RPG.strength = 20;
@@ -90,7 +90,7 @@ public class chooseclass extends javax.swing.JFrame {
         }
         else if (jComboBox1.getSelectedIndex() == 1) {
             RPG.hp = 20;
-            RPG.inventory[0] = "Use fireblast";
+            RPG.inventory[0] = "Use Fireblast";
             RPG.maxhp = 20;
             RPG.whatclass = "Mage";
             RPG.magic = 30;
@@ -100,8 +100,8 @@ public class chooseclass extends javax.swing.JFrame {
         }
         RPG.submitted = true;
         this.setVisible(false);
-        JOptionPane.showMessageDialog(frame, "you stand before the king. 'mr. " + name + ",' he says, 'I need you to go on a mission.'\n 'there are many evil creatures that inhabit the land. only a brave warrior like you could possibly eradicate them. now go and kill!' with that, he sends you off.");
-        RPG.frame.setTheText("Hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
+        JOptionPane.showMessageDialog(frame, "You stand before the King. 'Mr. " + name + ",' he says, 'I need you to go on a mission.'\n'There are many evil creatures that inhabit the land. Only a brave warrior like you could possibly eradicate them. Now go and kill!' With that, he sends you off.");
+        RPG.frame.setTheText("Hello " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
         RPG.updateStats();
         RPG.frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -99,7 +99,7 @@ public class RPG {
     }
     public static void cheats() {
         int r = JOptionPane.showConfirmDialog(frame, "Enter cheat mode?");
-        if (r==0) {
+        if (r == 0 && cheat == false) {
             JOptionPane.showMessageDialog(frame, "You filthy cheater!");
             hp = 1000000;
             exp = 1000000;
@@ -112,6 +112,9 @@ public class RPG {
             strength = 1000000;
             cheat = true;
             updateStats();
+        }
+        else if( r == 0 && cheat == true){
+            JOptionPane.showMessageDialog(frame, "You already are a filthy cheater!");
         }
     }
     public static void updateStats() {
