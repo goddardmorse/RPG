@@ -14,6 +14,9 @@ import javax.swing.JDialog;
  * @author GoddardMorse & Mcat12
  */
 public class RPG {
+    public static int trollcount = 100;
+    public static int goblincount = 100;
+    public static int unicroncount = 1;
     public static int count = 10;
     public static boolean cheat = false;
     static String[] village = {
@@ -32,7 +35,7 @@ public class RPG {
     static int[] inventorytype = {
         1, 0, 0, 0, 0
     };
-    static int on = 2;
+    static int on = 1;
     static Object[] shop = {
         "Greatsword", "Potion", 
     };
@@ -92,6 +95,7 @@ public class RPG {
         }
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
+        
     }
     public static void cheats() {
         int r = JOptionPane.showConfirmDialog(frame, "Enter cheat mode?");

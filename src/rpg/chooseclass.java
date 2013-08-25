@@ -1,5 +1,9 @@
 package rpg;
 
+import javax.swing.JOptionPane;
+import static rpg.RPG.frame;
+import static rpg.RPG.name;
+
 /**
  * @author GoddardMorse & Mcat12
  */
@@ -96,6 +100,7 @@ public class chooseclass extends javax.swing.JFrame {
         }
         RPG.submitted = true;
         this.setVisible(false);
+        JOptionPane.showMessageDialog(frame, "you stand before the king. 'mr. " + name + ",' he says, 'I need you to go on a mission.'\n 'there are many evil creatures that inhabit the land. only a brave warrior like you could possibly eradicate them. now go and kill!' with that, he sends you off.");
         RPG.frame.setTheText("Hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " HP");
         RPG.updateStats();
         RPG.frame.setVisible(true);

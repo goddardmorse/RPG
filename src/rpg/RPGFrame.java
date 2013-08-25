@@ -15,7 +15,19 @@ import javax.swing.WindowConstants;
 public class RPGFrame extends javax.swing.JFrame {
     public enum Monster {
         TROLL(10, 10, "troll"),
-        GOBLIN(10, 3, "goblin");
+        GOBLIN(10, 3, "goblin"),
+        UNICRON(70, 50, "Unicron"),
+        DOCTOR1(10, 10, "William Hartnell"),
+        DOCTOR2(15, 11, "Patrick Troughton"),
+        DOCTOR3(20, 12, "Jon Pertwee"),
+        DOCTOR4(25, 13, "Tom Baker"),
+        DOCTOR5(30, 14, "Peter Davison"),
+        DOCTOR6(35, 15, "Colin Baker"),
+        DOCTOR7(40, 16, "Sylvester McCoy"),
+        DOCTOR8(45, 17, "Paul McGann"),
+        DOCTOR9(50, 18, "Christopher Eccleston"),
+        DOCTOR10(55, 19, "David Tennant"),
+        DOCTOR11(60, 20, "Matt Smith");
         int hp;
         int pow;
         String name;
@@ -58,6 +70,11 @@ static int x = 0;
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,6 +160,42 @@ static int x = 0;
             }
         });
         jMenu1.add(jMenuItem4);
+
+        jMenu2.setText("fight");
+
+        jMenuItem5.setText("troll");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("goblin");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("Unicron");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("the doctor");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
+
+        jMenu1.add(jMenu2);
 
         jMenuItem3.setText("Exit");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -286,6 +339,22 @@ static int x = 0;
         RPG.cheats();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        fight(Monster.TROLL);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        fight(Monster.GOBLIN);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        fight(Monster.UNICRON);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        doctors();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,21 +404,38 @@ static int x = 0;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
     public void encounter(String compass) throws InterruptedException {
+        this.setTheText("Trolls: " + RPG.trollcount +
+                "\nGoblins: " + RPG.goblincount /*+
+                "\nUnicrons: " + RPG.unicroncount*/);
+        if (x == 0 && y == 0) {
+            if (RPG.goblincount == 0 && RPG.trollcount == 0) {
+                JOptionPane.showMessageDialog(null, "'Congratulations, warrior! you have completed this arduous task.\n your name will go down in history!' says the king.");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "'Aren't you supposed to be on a quest?' inquires the king.");
+            }
+        }
+        else {
         Random chance = new Random();
         int h = chance.nextInt(100) + 1;
         if (h < 21) {
-            jTextArea1.setText("Nothing has happened");
+            //jTextArea1.setText("Nothing has happened");
         } else if (h < 51) {
             if (RPG.arguments.equals("-old")) {
                 village v = new village();
@@ -358,9 +444,14 @@ static int x = 0;
                 village();
             }
         } else if (h < 91) {
+            if (RPG.trollcount > 0) {
             fight(Monster.TROLL);
+            }
         } else {
+            if (RPG.goblincount > 0) {
             fight(Monster.GOBLIN);
+            }
+        }
         }
     }
 
@@ -391,6 +482,88 @@ static int x = 0;
                 RPG.count = RPG.count - 1;
             }
         }
+    }
+
+
+    /*public void fight(int x, int y, String name) throws InterruptedException {
+        boolean dead = false;
+        int turn;
+        int hp = (x+y)/2;
+        JOptionPane.showMessageDialog(this, "A " + name + " appears!");
+        if (RPG.initiative < 2) {
+            turn = 0;
+        } else {
+            turn = 1;
+        }
+
+        while (hp > 0 && dead == false) {
+            if (turn == 0) {
+                JOptionPane.showMessageDialog(this, "The " + name + " attacks!");
+                Random hit = new Random();
+                RPG.hp = RPG.hp - hit.nextInt((x+y)/4);
+                if(RPG.hp < 0)
+                    RPG.hp = 0;
+                JOptionPane.showMessageDialog(this, "You have " + RPG.hp + " HP.");
+                if (RPG.hp < 1) {
+                    dead = true;
+                } else {
+                    turn = 1;
+                }
+            } else {
+                int vv = JOptionPane.showOptionDialog(RPG.frame,
+                        "What do you do?",
+                        "Attack", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        RPG.inventory,
+                        RPG.inventory[RPG.on - 1]);
+                JOptionPane.showMessageDialog(this, "You attack!");
+                Random hits = new Random();
+                if (RPG.whatclass.equalsIgnoreCase("Fighter")) {
+                    hp = hp - hits.nextInt(RPG.strength + RPG.inventorypower[vv]);
+                } else {
+                    hp = hp - hits.nextInt(RPG.magic + RPG.inventorypower[vv]);
+                }
+                if(hp < 0)
+                    hp = 0;
+                JOptionPane.showMessageDialog(this, "The " + name + " now has " + hp + " HP");
+                turn = 0;
+            }
+        }
+        if (dead == false) {
+            JOptionPane.showMessageDialog(this, "You have defeated the " + name + "!");
+            RPG.exp = RPG.exp + 5;
+            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+        } else if (dead == true) {
+            JOptionPane.showMessageDialog(this, "You have died...");
+            System.exit(0);
+        }
+    }*/
+    public void doctors () {
+        fight(Monster.DOCTOR1);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! William Hartnell is regenerating!");
+        fight(Monster.DOCTOR2);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Patrick Troughton is regenerating!");
+        fight(Monster.DOCTOR3);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Jon Pertwee is regenerating!");
+        fight(Monster.DOCTOR4);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Tom Baker is regenerating!");
+        fight(Monster.DOCTOR5);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Peter Davison is regenerating!");
+        fight(Monster.DOCTOR6);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Colin Baker is regenerating!");
+        fight(Monster.DOCTOR7);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Sylvester McCoy is regenerating!");
+        fight(Monster.DOCTOR8);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Paul McGann is regenerating!");
+        fight(Monster.DOCTOR9);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Christopher Eccleston is regenerating!");
+        fight(Monster.DOCTOR10);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! David Tennant is regenerating!");
+        fight(Monster.DOCTOR11);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Matt Smith is regenerating!");
+        JOptionPane.showMessageDialog(RPG.frame, "A Peter Capaldi appears!");
+        JOptionPane.showMessageDialog(RPG.frame, "Peter Capaldi walks off.");
     }
     public void fight (Monster m) {
         boolean dead = false;
@@ -464,8 +637,18 @@ static int x = 0;
             JOptionPane.showMessageDialog(this, "You have defeated the " + m.name + "!");
             RPG.exp = RPG.exp + 5;
             JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+            RPG.gold = RPG.gold + 5;
+            if (m.name().equalsIgnoreCase("troll")) {
+                RPG.trollcount = RPG.trollcount - 1;
+            }
+            else if (m.name().equalsIgnoreCase("goblin")) {
+                RPG.goblincount = RPG.goblincount - 1;
+            }
+            else if (m.name().equalsIgnoreCase("unicron")) {
+                RPG.unicroncount--;
+            }
         } else if (dead == true) {
-            JOptionPane.showMessageDialog(this, "You have died...");
+            JOptionPane.showMessageDialog(this, "You have failed your quest...");
             System.exit(0);
         }
     }
@@ -510,9 +693,9 @@ static int x = 0;
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
                             RPG.gold = RPG.gold - RPG.shopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.shop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.shoptype[oo];
+                            RPG.inventory[RPG.on] = "Use " + RPG.shop[oo];
+                            RPG.inventorypower[RPG.on] = RPG.shoppower[oo];
+                            RPG.inventorytype[RPG.on] = RPG.shoptype[oo];
                             RPG.on++;
                         }
                     } else {
@@ -525,9 +708,9 @@ static int x = 0;
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
                             RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.mageshop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.mageshoptype[oo];
+                            RPG.inventory[RPG.on] = "Use " + RPG.mageshop[oo];
+                            RPG.inventorypower[RPG.on] = RPG.mageshoppower[oo];
+                            RPG.inventorytype[RPG.on] = RPG.mageshoptype[oo];
                             RPG.on++;
                         }
                     }
