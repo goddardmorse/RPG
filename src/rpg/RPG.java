@@ -20,9 +20,9 @@ public class RPG {
     public static int count = 10;
     public static boolean cheat = false;
     static String[] village = {
-        "Rest at the inn                 ",
+        "Rest at the inn",
         "Level up at the training grounds",
-        "Get a new weapon at the shop    "
+        "Get a new weapon at the shop"
     };
     public static final int attack = 1;
     public static final int heal = 2;
