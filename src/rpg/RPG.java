@@ -14,12 +14,15 @@ import javax.swing.JDialog;
  * @author GoddardMorse & Mcat12
  */
 public class RPG {
+    public static int trollcount = 100;
+    public static int goblincount = 100;
+    public static int unicroncount = 1;
     public static int count = 10;
     public static boolean cheat = false;
     static String[] village = {
-        "Rest at the inn                 ",
+        "Rest at the inn",
         "Level up at the training grounds",
-        "Get a new weapon at the shop    "
+        "Get a new weapon at the shop"
     };
     public static final int attack = 1;
     public static final int heal = 2;
@@ -32,7 +35,7 @@ public class RPG {
     static int[] inventorytype = {
         1, 0, 0, 0, 0
     };
-    static int on = 2;
+    static int on = 1;
     static Object[] shop = {
         "Greatsword", "Potion", 
     };
@@ -92,10 +95,11 @@ public class RPG {
         }
         JOptionPane.showMessageDialog(null, "Please build your character.");
         v.setVisible(true);
+        
     }
     public static void cheats() {
         int r = JOptionPane.showConfirmDialog(frame, "Enter cheat mode?");
-        if (r==0) {
+        if (r == 0 && cheat == false) {
             JOptionPane.showMessageDialog(frame, "You filthy cheater!");
             hp = 1000000;
             exp = 1000000;
@@ -108,6 +112,9 @@ public class RPG {
             strength = 1000000;
             cheat = true;
             updateStats();
+        }
+        else if( r == 0 && cheat == true){
+            JOptionPane.showMessageDialog(frame, "You already are a filthy cheater!");
         }
     }
     public static void updateStats() {

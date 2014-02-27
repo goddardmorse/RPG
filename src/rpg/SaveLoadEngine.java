@@ -55,6 +55,9 @@ public class SaveLoadEngine {
             gameProp.setProperty("wep3pow", Integer.toString(1));
             gameProp.setProperty("wep4pow", Integer.toString(1));
             gameProp.setProperty("wep5pow", Integer.toString(1));
+            gameProp.setProperty("trollcount", Integer.toString(1000000));
+            gameProp.setProperty("goblincount", Integer.toString(1000000));
+            gameProp.setProperty("unicroncount", Integer.toString(1000000));
             if (retval == JFileChooser.APPROVE_OPTION) {
                 try {
                     File f = fc.getSelectedFile();
@@ -96,6 +99,9 @@ public class SaveLoadEngine {
             gameProp.setProperty("wep3pow", Integer.toString(RPG.inventorypower[2]));
             gameProp.setProperty("wep4pow", Integer.toString(RPG.inventorypower[3]));
             gameProp.setProperty("wep5pow", Integer.toString(RPG.inventorypower[4]));
+            gameProp.setProperty("trollcount", Integer.toString(RPG.trollcount));
+            gameProp.setProperty("goblincount", Integer.toString(RPG.goblincount));
+            gameProp.setProperty("unicroncount", Integer.toString(RPG.unicroncount));
             /*
              * Here, add in:
              * 
@@ -157,6 +163,9 @@ public class SaveLoadEngine {
                 RPG.inventorypower[2] = Integer.parseInt(gameProp.getProperty("wep3pow"));
                 RPG.inventorypower[3] = Integer.parseInt(gameProp.getProperty("wep4pow"));
                 RPG.inventorypower[4] = Integer.parseInt(gameProp.getProperty("wep5pow"));
+                RPG.trollcount = Integer.parseInt(gameProp.getProperty("trollcount"));
+                RPG.goblincount = Integer.parseInt(gameProp.getProperty("goblincount"));
+                RPG.unicroncount = Integer.parseInt(gameProp.getProperty("unicroncount"));
 
                 /*
                  * Here add in code to change the character's values (HP)

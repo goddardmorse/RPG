@@ -14,8 +14,20 @@ import javax.swing.WindowConstants;
  */
 public class RPGFrame extends javax.swing.JFrame {
     public enum Monster {
-        TROLL(10, 10, "troll"),
-        GOBLIN(10, 3, "goblin");
+        TROLL(10, 10, "Troll"),
+        GOBLIN(10, 3, "Goblin"),
+        UNICRON(70, 50, "Unicron"),
+        DOCTOR1(10, 10, "William Hartnell"),
+        DOCTOR2(15, 11, "Patrick Troughton"),
+        DOCTOR3(20, 12, "Jon Pertwee"),
+        DOCTOR4(25, 13, "Tom Baker"),
+        DOCTOR5(30, 14, "Peter Davison"),
+        DOCTOR6(35, 15, "Colin Baker"),
+        DOCTOR7(40, 16, "Sylvester McCoy"),
+        DOCTOR8(45, 17, "Paul McGann"),
+        DOCTOR9(50, 18, "Christopher Eccleston"),
+        DOCTOR10(55, 19, "David Tennant"),
+        DOCTOR11(60, 20, "Matt Smith");
         int hp;
         int pow;
         String name;
@@ -43,80 +55,86 @@ static int x = 0;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bttnWest = new javax.swing.JButton();
+        bttnEast = new javax.swing.JButton();
+        bttnNorth = new javax.swing.JButton();
+        bttnSouth = new javax.swing.JButton();
+        bttnRest = new javax.swing.JButton();
+        txtLoc = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtOutput = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtStats = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jButton1.setText("West");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttnWest.setText("West");
+        bttnWest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttnWestActionPerformed(evt);
             }
         });
 
-        jButton2.setText("East");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bttnEast.setText("East");
+        bttnEast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bttnEastActionPerformed(evt);
             }
         });
 
-        jButton3.setText("North");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bttnNorth.setText("North");
+        bttnNorth.setName(""); // NOI18N
+        bttnNorth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bttnNorthActionPerformed(evt);
             }
         });
 
-        jButton4.setText("South");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bttnSouth.setText("South");
+        bttnSouth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bttnSouthActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Rest");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bttnRest.setText("Rest");
+        bttnRest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bttnRestActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("0,0");
+        txtLoc.setText("0,0");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setEditable(false);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " hp");
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtOutput.setEditable(false);
+        txtOutput.setColumns(20);
+        txtOutput.setLineWrap(true);
+        txtOutput.setRows(5);
+        txtOutput.setText("hello, " + RPG.name + ", a " + RPG.whatclass + " with " + RPG.hp + " hp");
+        txtOutput.setWrapStyleWord(true);
+        txtOutput.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
+        jScrollPane1.setViewportView(txtOutput);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 255)));
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtStats.setEditable(false);
+        txtStats.setColumns(20);
+        txtStats.setLineWrap(true);
+        txtStats.setRows(5);
+        txtStats.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txtStats);
 
         jMenu1.setText("File");
 
@@ -144,6 +162,42 @@ static int x = 0;
         });
         jMenu1.add(jMenuItem4);
 
+        jMenu2.setText("Fight");
+
+        jMenuItem5.setText("Troll");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Goblin");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("Unicron");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("The Doctor");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
+
+        jMenu1.add(jMenu2);
+
         jMenuItem3.setText("Exit");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,35 +221,35 @@ static int x = 0;
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(bttnWest)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4)
+                                    .addComponent(bttnSouth)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(bttnRest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(bttnNorth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2))))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(bttnEast))))
+                            .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(bttnNorth)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bttnRest)
+                    .addComponent(bttnWest)
+                    .addComponent(bttnEast))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(bttnSouth)
                 .addContainerGap())
             .addComponent(jScrollPane1)
         );
@@ -203,45 +257,45 @@ static int x = 0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bttnNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnNorthActionPerformed
         try {
             y = y + 1;
-            jLabel1.setText(x + "," + y);
+            txtLoc.setText(x + "," + y);
             cheaterTick();
             encounter("N");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updateStats();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bttnNorthActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bttnSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSouthActionPerformed
         try {
             y = y - 1;
-            jLabel1.setText(x + "," + y);
+            txtLoc.setText(x + "," + y);
             cheaterTick();
             encounter("S");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updateStats();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bttnSouthActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bttnWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnWestActionPerformed
         try {
             x = x - 1;
-            jLabel1.setText(x + "," + y);
+            txtLoc.setText(x + "," + y);
             cheaterTick();
             encounter("W");
         } catch (InterruptedException ex) {
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updateStats();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bttnWestActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bttnEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnEastActionPerformed
         x = x + 1;
-        jLabel1.setText(x + "," + y);
+        txtLoc.setText(x + "," + y);
         try {
             cheaterTick();
             encounter("E");
@@ -249,14 +303,14 @@ static int x = 0;
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updateStats();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bttnEastActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void bttnRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRestActionPerformed
         try {
             cheaterTick();
             encounter("R");
-            if (jTextArea1.getText().equals("Nothing has happened")) {
-                jTextArea1.setText("You rested and gained 5 HP");
+            if (txtOutput.getText().equals("Nothing has happened")) {
+                txtOutput.setText("You rested and gained 5 HP");
                 RPG.hp += 5;
                 if (RPG.hp > RPG.maxhp) {
                     RPG.hp = RPG.maxhp;
@@ -266,7 +320,7 @@ static int x = 0;
             Logger.getLogger(RPGFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         RPG.updateStats();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_bttnRestActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         SaveLoadEngine.save();
@@ -285,6 +339,22 @@ static int x = 0;
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         RPG.cheats();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        fight(Monster.TROLL);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        fight(Monster.GOBLIN);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        fight(Monster.UNICRON);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        doctors();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,57 +398,87 @@ static int x = 0;
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bttnEast;
+    private javax.swing.JButton bttnNorth;
+    private javax.swing.JButton bttnRest;
+    private javax.swing.JButton bttnSouth;
+    private javax.swing.JButton bttnWest;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel txtLoc;
+    private javax.swing.JTextArea txtOutput;
+    private javax.swing.JTextArea txtStats;
     // End of variables declaration//GEN-END:variables
     public void encounter(String compass) throws InterruptedException {
-        Random chance = new Random();
-        int h = chance.nextInt(100) + 1;
-        if (h < 21) {
-            jTextArea1.setText("Nothing has happened");
-        } else if (h < 51) {
-            if (RPG.arguments.equals("-old")) {
-                village v = new village();
-                v.setVisible(true);
-            } else if (h < 81 && !compass.equals("R")) {
-                village();
+        if (x == 0 && y == 0) {
+            if (RPG.goblincount == 0 && RPG.trollcount == 0) {
+                JOptionPane.showMessageDialog(null, "'Congratulations, warrior! You have completed this arduous task.\nYour name will go down in history!' Says the King.");
             }
-        } else if (h < 91) {
-            fight(Monster.TROLL);
-        } else {
-            fight(Monster.GOBLIN);
+            else {
+                JOptionPane.showMessageDialog(null, "'Aren't you supposed to be on a quest?' Inquires the King.");
+            }
         }
+        else {
+            Random chance = new Random();
+            int h = chance.nextInt(100) + 1;
+            if (h < 21) {
+                //jTextArea1.setText("Nothing has happened");
+            }
+            else if (h < 51) {
+                if (RPG.arguments.equals("-old")) {
+                    village v = new village();
+                    v.setVisible(true);
+                }
+                else if (h < 81 && !compass.equals("R")) {
+                    village();
+                }
+            }
+            else if (h < 101) {
+                if (RPG.trollcount > 0 && h < 76) {
+                    fight(Monster.TROLL);
+                }
+                else {
+                    if (RPG.goblincount > 0) {
+                        fight(Monster.GOBLIN);
+                    }
+                }
+            }
+        }
+        updateInfo();
     }
 
     public void setTheText(String f) {
-        jTextArea1.setText(f);
+        txtOutput.setText(f);
     }
 
     public void setTheLabel(String o) {
-        jTextArea2.setText(o);
+        txtStats.setText(o);
     }
 
     public String getTheText() {
-        String f = jTextArea1.getText();
+        String f = txtOutput.getText();
         return f;
     }
 
     public void updateLocation() {
-        jLabel1.setText(x + "," + y);
+        txtLoc.setText(x + "," + y);
+    }
+    
+    public void updateInfo(){
+        this.setTheText("Trolls: " + RPG.trollcount +
+                "\nGoblins: " + RPG.goblincount /*+
+                "\nUnicrons: " + RPG.unicroncount*/);
     }
     
     public void cheaterTick(){
@@ -388,9 +488,36 @@ static int x = 0;
                 System.exit(0);
             }
             else {
-                RPG.count = RPG.count - 1;
+                RPG.count--;
             }
         }
+    }
+    
+    public void doctors () {
+        fight(Monster.DOCTOR1);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! William Hartnell is regenerating!");
+        fight(Monster.DOCTOR2);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Patrick Troughton is regenerating!");
+        fight(Monster.DOCTOR3);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Jon Pertwee is regenerating!");
+        fight(Monster.DOCTOR4);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Tom Baker is regenerating!");
+        fight(Monster.DOCTOR5);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Peter Davison is regenerating!");
+        fight(Monster.DOCTOR6);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Colin Baker is regenerating!");
+        fight(Monster.DOCTOR7);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Sylvester McCoy is regenerating!");
+        fight(Monster.DOCTOR8);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Paul McGann is regenerating!");
+        fight(Monster.DOCTOR9);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Christopher Eccleston is regenerating!");
+        fight(Monster.DOCTOR10);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! David Tennant is regenerating!");
+        fight(Monster.DOCTOR11);
+        JOptionPane.showMessageDialog(RPG.frame, "What?! Matt Smith is regenerating!");
+        JOptionPane.showMessageDialog(RPG.frame, "A Peter Capaldi appears!");
+        JOptionPane.showMessageDialog(RPG.frame, "Peter Capaldi walks off.");
     }
     public void fight (Monster m) {
         boolean dead = false;
@@ -428,7 +555,7 @@ static int x = 0;
                         RPG.inventory[RPG.on - 1]);
                     switch (RPG.inventorytype[vv]) {
                         default:
-                            JOptionPane.showMessageDialog(this, "that is not a valid action");
+                            JOptionPane.showMessageDialog(this, "That is not a valid action");
                             break;
                         case RPG.attack:
                             JOptionPane.showMessageDialog(this, "You attack!");
@@ -450,7 +577,7 @@ static int x = 0;
                             if (RPG.hp > RPG.maxhp) {
                                 RPG.hp = RPG.maxhp;
                             }
-                            JOptionPane.showMessageDialog(this, "The " + RPG.inventory[vv] + " gives you " + RPG.inventorypower[vv] + " HP.");
+                            JOptionPane.showMessageDialog(this, "The " + RPG.inventory[vv].substring(4) + " gives you " + RPG.inventorypower[vv] + " HP.");
                             JOptionPane.showMessageDialog(this, "You now have " + RPG.hp + " HP.");
                             turn = monster;
                             break;
@@ -463,9 +590,19 @@ static int x = 0;
         if (dead == false) {
             JOptionPane.showMessageDialog(this, "You have defeated the " + m.name + "!");
             RPG.exp = RPG.exp + 5;
-            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp and " + RPG.hp + " HP");
+            RPG.gold = RPG.gold + 5;
+            JOptionPane.showMessageDialog(this, "You now have " + RPG.exp + " Exp, " + RPG.hp + " HP, and " + RPG.gold + " Gold.");
+            if (m.name().equalsIgnoreCase("troll")) {
+                RPG.trollcount--;
+            }
+            else if (m.name().equalsIgnoreCase("goblin")) {
+                RPG.goblincount--;
+            }
+            else if (m.name().equalsIgnoreCase("unicron")) {
+                RPG.unicroncount--;
+            }
         } else if (dead == true) {
-            JOptionPane.showMessageDialog(this, "You have died...");
+            JOptionPane.showMessageDialog(this, "You have failed your quest...");
             System.exit(0);
         }
     }
@@ -510,9 +647,9 @@ static int x = 0;
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
                             RPG.gold = RPG.gold - RPG.shopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.shop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.shoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.shoptype[oo];
+                            RPG.inventory[RPG.on] = "Use " + RPG.shop[oo];
+                            RPG.inventorypower[RPG.on] = RPG.shoppower[oo];
+                            RPG.inventorytype[RPG.on] = RPG.shoptype[oo];
                             RPG.on++;
                         }
                     } else {
@@ -525,9 +662,9 @@ static int x = 0;
                             JOptionPane.showMessageDialog(this, "You don't have enough money!");
                         } else {
                             RPG.gold = RPG.gold - RPG.mageshopgold[oo];
-                            RPG.inventory[RPG.on - 1] = "Use " + RPG.mageshop[oo];
-                            RPG.inventorypower[RPG.on - 1] = RPG.mageshoppower[oo];
-                            RPG.inventorytype[RPG.on - 1] = RPG.mageshoptype[oo];
+                            RPG.inventory[RPG.on] = "Use " + RPG.mageshop[oo];
+                            RPG.inventorypower[RPG.on] = RPG.mageshoppower[oo];
+                            RPG.inventorytype[RPG.on] = RPG.mageshoptype[oo];
                             RPG.on++;
                         }
                     }
