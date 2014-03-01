@@ -4,4 +4,4 @@ This is an unfinished RPG I once created in Java.
 This is probably as finished as it is going to get, so have fun modifying it.
 <del>EDIT: Mcat12 has convinced me to bring this project back, so expect updates soon</del>
 Goddard is being lazy, so he should remove this comment. :D
-I would remove the comment, but I'm <del>too lazy</del> going to not be lazy.
+I would remove the comment, but I'm too lazy <del>going to not be lazy.</del>
