@@ -423,10 +423,10 @@ static int x = 0;
     public void encounter(String compass) throws InterruptedException {
         if (x == 0 && y == 0) {
             if (RPG.goblincount == 0 && RPG.trollcount == 0) {
-                JOptionPane.showMessageDialog(null, "'Congratulations, warrior! You have completed this arduous task.\nYour name will go down in history!' Says the King.");
+                JOptionPane.showMessageDialog(null, "\"Congratulations, warrior! You have completed this arduous task.\nYour name will go down in history!\" Says the King.");
             }
             else {
-                JOptionPane.showMessageDialog(null, "'Aren't you supposed to be on a quest?' Inquires the King.");
+                JOptionPane.showMessageDialog(null, "\"Aren't you supposed to be on a quest?\" Inquires the King.");
             }
         }
         else {
