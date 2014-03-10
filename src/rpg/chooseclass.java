@@ -1,6 +1,6 @@
 package rpg;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import static rpg.RPG.frame;
 import static rpg.RPG.name;
 

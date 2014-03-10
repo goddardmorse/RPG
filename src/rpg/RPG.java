@@ -1,14 +1,10 @@
 package rpg;
 
-import java.awt.Graphics2D;
-import java.awt.SplashScreen;
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JDialog;
+import java.awt.*;
+import java.io.*;
+import java.net.*;
+import java.util.logging.*;
+import javax.swing.*;
 
 /**
  * @author GoddardMorse & Mcat12
@@ -69,7 +65,7 @@ public class RPG {
     static int strength;
     static int magic;
     static String name;
-    static String arguments = "-nothing";
+    static String arguments = "";
     static boolean zhp = false;
     static boolean submitted = false;
     static int initiative;

@@ -1,13 +1,9 @@
 package rpg;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
+import java.awt.*;
 import java.io.*;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
+import java.util.*;
+import javax.swing.*;
 
 /**
  * @author GoddardMorse & Mcat12
