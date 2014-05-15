@@ -79,6 +79,7 @@ public class chooseclass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    	// Fighter Class
         if (jComboBox1.getSelectedIndex() == 0) {
             RPG.hp = 50;
             RPG.inventory[0] = "Use Sword";
