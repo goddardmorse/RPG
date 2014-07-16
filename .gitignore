@@ -1,2 +1,5 @@
 /build/
 !/src/
+/.classpath
+/.project
+/bin
